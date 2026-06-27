@@ -110,6 +110,7 @@ export const brooklyn: ChapterConfig = {
   alumniTeam: [
     { name: "Samantha Li", role: "Advisor", photo: "/images/brooklyn/team_3.png" },
     { name: "Leonard Reese", role: "Founder, Advisor", photo: "/images/brooklyn/team_4.png" },
+    { name: "Ke Wang", role: "Alumni" },
   ],
 };
 
@@ -124,5 +125,9 @@ export const bkPartnerLogos: LogoItem[] = [
   { src: "/logos/partners/partner_09.png", alt: "LottieFiles" },
   { src: "/logos/partners/partner_10.png", alt: "Mastercard" },
   { src: "/logos/partners/nyu.svg", alt: "NYU" },
+  { src: "/logos/partners/pratt.svg", alt: "Pratt" },
+  { src: "/logos/partners/salt.svg", alt: "Salt" },
+  { src: "/logos/partners/sp.svg", alt: "S+P" },
+  { src: "/logos/partners/wework.svg", alt: "WeWork" },
   { src: "/logos/partners/partner_18.png", alt: "Yext" },
 ];
