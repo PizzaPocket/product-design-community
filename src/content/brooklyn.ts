@@ -12,7 +12,6 @@ export const brooklyn: ChapterConfig = {
       { label: "Events", href: "https://lu.ma/bkproductdesign" },
       { label: "About", href: "/brooklyn/about" },
     ],
-    cta: { label: "Get involved", href: "https://forms.gle/mobrphDchV83EdQK9" },
   },
 
   footer: {

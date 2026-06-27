@@ -14,7 +14,6 @@ export const singapore: ChapterConfig = {
       { label: "Initiatives", href: "/singapore/initiatives" },
       { label: "Partnerships", href: "/singapore/partnerships" },
     ],
-    cta: { label: "Get involved", href: "https://forms.gle/volunteer-spd" },
   },
 
   footer: {
