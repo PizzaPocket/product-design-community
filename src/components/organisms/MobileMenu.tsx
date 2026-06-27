@@ -25,7 +25,7 @@ export function MobileMenu({ chapter, isOpen, onClose }: MobileMenuProps) {
     >
       {/* Header row — identical padding and height to NavBar so logo and close icon
           sit at exactly the same coordinates as the wordmark and hamburger */}
-      <div className="flex items-center justify-between px-10 h-[var(--nav-height)] shrink-0 shadow-[0_1px_0_0_#e5e5e5]">
+      <div className="flex items-center justify-between px-6 h-[var(--nav-height)] shrink-0 shadow-[0_1px_0_0_#e5e5e5]">
         <a href={homeHref} onClick={onClose} className="flex items-center gap-2 shrink-0">
           {chapter.logo ? (
             <img src={chapter.logo} alt={chapter.name} className="h-6 w-auto" />
@@ -48,7 +48,7 @@ export function MobileMenu({ chapter, isOpen, onClose }: MobileMenuProps) {
       </div>
 
       {/* Nav links — H2 scale, sentence case, bold */}
-      <nav className="flex flex-col px-10 py-10 gap-8">
+      <nav className="flex flex-col px-6 py-10 gap-8">
         {chapter.nav.links.map((link) => (
           <a
             key={link.href}

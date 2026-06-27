@@ -20,7 +20,7 @@ export function NavBar({ chapter }: NavBarProps) {
     <>
       <header className="sticky top-0 z-50 bg-literally-white shadow-[0_1px_0_0_#e5e5e5]">
         <div
-          className="flex items-center justify-between px-10 h-[var(--nav-height)]"
+          className="flex items-center justify-between px-6 md:px-10 h-[var(--nav-height)]"
           style={{ maxWidth: "100%" }}
         >
           {/* Logo */}
