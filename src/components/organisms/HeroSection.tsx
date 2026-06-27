@@ -35,7 +35,7 @@ export function HeroSection({
       {scrim === "full" && <div className="absolute inset-0 bg-nearly-black/30" />}
       {scrim === "lr"   && <div className="absolute inset-0 bg-gradient-to-r from-nearly-black/40 via-nearly-black/10 via-60% to-transparent" />}
       {scrim === "tb"   && <div className="absolute inset-0 bg-gradient-to-b from-nearly-black/40 via-nearly-black/10 via-60% to-transparent" />}
-      {scrim === "bt"   && <div className="absolute inset-0 bg-gradient-to-t from-nearly-black/40 via-nearly-black/10 via-60% to-transparent" />}
+      {scrim === "bt"   && <div className="absolute inset-0 bg-gradient-to-t from-nearly-black/40 to-transparent" />}
 
       {(heading || ctaLabel) && (
         <div className={`absolute inset-0 z-10 flex ${scrim === "bt" ? "items-end pb-[var(--section-pb)]" : "items-center"}${isCenter ? " justify-center" : ""}`}>
