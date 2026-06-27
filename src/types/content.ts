@@ -53,20 +53,41 @@ export interface PartnershipTierItem {
   image?: string;
 }
 
+export interface ValuePillar {
+  illustration: string;
+  heading: string;
+  body: string;
+}
+
+export interface StatItem {
+  value: string;
+  label: string;
+}
+
 export interface ChapterConfig {
   slug: "pdc" | "brooklyn" | "losangeles" | "singapore";
   name: string;
   accentColor: string;
   logo?: string;
+  footerLogo?: string;
   nav: NavConfig;
   footer: FooterConfig;
   hero: {
     heading: string;
-    body: string;
-    ctaLabel: string;
-    ctaHref: string;
+    body?: string;
+    ctaLabel?: string;
+    ctaHref?: string;
     image: string;
+    textAlign?: "center" | "left";
+    scrim?: boolean;
+    compact?: boolean;
   };
+  about?: {
+    heading: string;
+    body: string;
+  };
+  stats?: StatItem[];
+  values?: ValuePillar[];
   eventTypes?: EventTypeItem[];
   initiatives?: InitiativeItem[];
   team?: TeamMember[];

@@ -4,7 +4,7 @@ import { HeroSection } from "@/components/organisms/HeroSection";
 import { ValuePillars } from "@/components/organisms/ValuePillars";
 import { PartnerLogoGrid } from "@/components/organisms/PartnerLogoGrid";
 import { SectionWrapper } from "@/components/organisms/SectionWrapper";
-import { EventTypeRow } from "@/components/molecules/EventTypeRow";
+import { AlternatingMediaRow } from "@/components/molecules/AlternatingMediaRow";
 import { ChapterCard } from "@/components/molecules/ChapterCard";
 import {
   pdc,
@@ -27,8 +27,10 @@ export default function HomePage() {
       <NavBar chapter={pdc} />
 
       <main>
-        {/* Hero — no CTA button on PDC home */}
-        <HeroSection heading={pdc.hero.heading} image={pdc.hero.image} />
+        <HeroSection
+          heading={pdc.hero.heading}
+          image={pdc.hero.image}
+        />
 
         {/* Subtitle — centered, sits directly below the hero */}
         <SectionWrapper className="py-10 text-center">
@@ -40,19 +42,23 @@ export default function HomePage() {
           </p>
         </SectionWrapper>
 
-        {/* Events — no SectionWrapper wrapper; images are full-bleed on mobile */}
+        {/* Events — heading is max-width constrained; rows handle their own max-width so images can bleed on mobile */}
         <section className="pb-20 flex flex-col gap-12">
-          <h2
-            className="font-bold text-nearly-black text-center px-[var(--section-px)]"
-            style={{ fontSize: "var(--text-h2)", lineHeight: "var(--lh-h2)" }}
-          >
-            Events uplifting local designers
-          </h2>
+          <SectionWrapper as="div" className="pt-0">
+            <h2
+              className="font-bold text-nearly-black text-center"
+              style={{ fontSize: "var(--text-h2)", lineHeight: "var(--lh-h2)" }}
+            >
+              Events uplifting local designers
+            </h2>
+          </SectionWrapper>
           <div className="flex flex-col gap-16">
             {pdcEventTypes.map((event, i) => (
-              <EventTypeRow
+              <AlternatingMediaRow
                 key={event.title}
-                {...event}
+                heading={event.title}
+                body={event.description}
+                image={event.image}
                 imagePosition={i % 2 === 0 ? "left" : "right"}
               />
             ))}

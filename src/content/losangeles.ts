@@ -4,6 +4,8 @@ export const losangeles: ChapterConfig = {
   slug: "losangeles",
   name: "Los Angeles Product Design",
   accentColor: "var(--color-la-poolside)",
+  logo: "/logos/lapd_logo_nav.svg",
+  footerLogo: "/logos/lapd_logo_footer.svg",
 
   nav: {
     links: [
@@ -29,12 +31,40 @@ export const losangeles: ChapterConfig = {
   },
 
   hero: {
-    heading: "Los Angeles Product Design",
-    body: "A community for product designers in Los Angeles.",
-    ctaLabel: "See upcoming events",
-    ctaHref: "https://luma.com/losangelesproductdesign",
-    image: "/images/losangeles/hero.jpg",
+    heading: "What's in LA",
+    image: "/images/losangeles/hero.png",
+    textAlign: "center",
+    scrim: true,
+    compact: true,
   },
+
+  about: {
+    heading: "About us",
+    body: "Los Angeles Product Design was founded in 2022 to create a dedicated home for product designers across LA. In a city full of creative energy and diverse industries, we bring together designers to learn from each other, find community, and grow their craft.",
+  },
+
+  stats: [
+    { value: "2022", label: "Founded" },
+    { value: "1,100+", label: "Repeat attendees" },
+  ],
+
+  values: [
+    {
+      illustration: "/illustrations/value-grow.png",
+      heading: "Grow together, learn always",
+      body: "We believe the best design communities are built on curiosity and generosity. From speaker events, workshops, to open conversations, we're here to help each other grow no matter your experience level.",
+    },
+    {
+      illustration: "/illustrations/value-impact.png",
+      heading: "Making impact with design",
+      body: "We're more than just designers. We're a community driven by shared purpose. By coming together, we use design to spark dialogue, support each other's goals, and contribute to something bigger than ourselves.",
+    },
+    {
+      illustration: "/illustrations/value-strangers.png",
+      heading: "Come as strangers, leave as friends",
+      body: "Whether it's your first event or your hundredth, you'll find people ready to welcome, support, and grow with you. Here, collaboration turns into camaraderie, and shared passion turns strangers into lifelong friends and allies.",
+    },
+  ],
 
   initiatives: [
     {
@@ -54,14 +84,16 @@ export const losangeles: ChapterConfig = {
   ],
 
   team: [
-    { name: "Lillian Yang", role: "Founder / Organizer" },
-    { name: "Leonard Reese", role: "Co-Founder" },
-    { name: "Tiffany Lim", role: "Partnerships" },
-    { name: "Kevin Ulloa", role: "Design" },
-    { name: "Brian Hui", role: "Content / Design" },
-    { name: "Annie Chuong", role: "Logistics" },
-    { name: "Sneha Lakshmanan", role: "Photography" },
+    { name: "Lillian Yang",     role: "Founder / Organizer", photo: "/images/losangeles/team_1.jpeg" },
+    { name: "Tiffany Lim",      role: "Partnerships",         photo: "/images/losangeles/team_2.jpeg" },
+    { name: "Kevin Ulloa",      role: "Design",               photo: "/images/losangeles/team_3.jpg" },
+    { name: "Leonard Reese",    role: "Co-Founder",           photo: "/images/losangeles/team_4.png" },
+    { name: "Brian Hui",        role: "Content / Design",     photo: "/images/losangeles/alumni_2.jpeg" },
+    { name: "Annie Chuong",     role: "Logistics",            photo: "/images/losangeles/alumni_3.jpg" },
+    { name: "Sneha Lakshmanan", role: "Photography",          photo: "/images/losangeles/alumni_4.jpeg" },
   ],
 
-  alumniTeam: [{ name: "Samantha Li", role: "Alumni" }],
+  alumniTeam: [
+    { name: "Samantha Li", role: "Alumni" },
+  ],
 };

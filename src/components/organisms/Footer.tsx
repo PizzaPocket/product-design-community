@@ -22,7 +22,7 @@ export function Footer({ chapter }: FooterProps) {
           <div className="flex flex-col gap-4">
             <a href={homeHref}>
               <img
-                src="/logos/pdc_logo_stacked.png"
+                src={chapter.footerLogo ?? "/logos/pdc_logo_stacked.png"}
                 alt={chapter.name}
                 className="h-16 w-auto"
               />

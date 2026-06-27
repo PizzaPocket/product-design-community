@@ -42,7 +42,7 @@ export const pdc: ChapterConfig = {
     body: "Connecting the world's product design community through curiosity and shared learning.",
     ctaLabel: "Find your chapter",
     ctaHref: "#chapters",
-    image: "/images/global/global_1.jpg",
+    image: "/images/global/hero_photo.png",
   },
 };
 

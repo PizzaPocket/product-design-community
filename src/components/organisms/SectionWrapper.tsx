@@ -14,7 +14,10 @@ export function SectionWrapper({
   id,
 }: SectionWrapperProps) {
   return (
-    <Tag id={id} className={`px-[var(--section-px)] ${className}`}>
+    <Tag
+      id={id}
+      className={`w-full max-w-[var(--page-max-w)] mx-auto px-[var(--section-px)] ${className}`}
+    >
       {children}
     </Tag>
   );

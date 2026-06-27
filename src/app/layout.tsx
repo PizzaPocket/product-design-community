@@ -12,7 +12,6 @@ export const metadata: Metadata = {
   title: "Product Design Community",
   description:
     "A community for product designers across Brooklyn, Los Angeles, and Singapore.",
-  icons: { icon: "/favicon.png" },
 };
 
 export default function RootLayout({

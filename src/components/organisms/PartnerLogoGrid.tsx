@@ -17,7 +17,7 @@ export function PartnerLogoGrid({ logos, sectionHeading }: PartnerLogoGridProps)
     <SectionWrapper className="py-16 flex flex-col gap-10">
       {sectionHeading && (
         <h2
-          className="font-bold text-nearly-black"
+          className="font-bold text-nearly-black text-center"
           style={{
             fontSize: "var(--text-h2)",
             lineHeight: "var(--lh-h2)",

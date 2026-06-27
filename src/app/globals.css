@@ -39,9 +39,10 @@
   --text-label: 16px; --lh-label: 1.6; --ls-label: 0.08em;
 
   /* Layout */
-  --section-px: 120px;
-  --nav-height: 74px;
-  --gap-nav:    24px;
+  --section-px:  120px;
+  --page-max-w:  1440px;
+  --nav-height:  74px;
+  --gap-nav:     24px;
 }
 
 @media (max-width: 1365px) {
