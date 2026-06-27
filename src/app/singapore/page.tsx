@@ -82,20 +82,18 @@ export default function SingaporePage() {
               <Button variant="secondary" href="/singapore/initiatives">
                 More about initiatives
               </Button>
+              <hr className="w-full border-just-grey/20" />
               <p
                 className="text-really-dark-grey text-center"
                 style={{ fontSize: "var(--text-b1)", lineHeight: "var(--lh-b1)" }}
               >
-                Keen to get involved?{" "}
-                {singapore.volunteerHref && (
-                  <a
-                    href={singapore.volunteerHref}
-                    className="underline hover:text-deep-blueklyn transition-colors"
-                  >
-                    Volunteer with us
-                  </a>
-                )}
+                Keen to get involved?
               </p>
+              {singapore.volunteerHref && (
+                <Button variant="primary" href={singapore.volunteerHref} target="_blank">
+                  Volunteer with us
+                </Button>
+              )}
             </SectionWrapper>
           </Shelf>
         )}
