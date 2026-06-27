@@ -35,7 +35,7 @@ export const brooklyn: ChapterConfig = {
     heading: "What's on over the Bridge",
     image: "/images/brooklyn/hero.webp",
     textAlign: "center",
-    scrim: "tb",
+    scrim: "bt",
     compact: true,
     ctaLabel: "Go to events",
     ctaHref: "https://lu.ma/bkproductdesign",
