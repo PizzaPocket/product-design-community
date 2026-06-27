@@ -24,7 +24,7 @@ export function HeroSection({
   const isCenter = textAlign === "center";
 
   return (
-    <section className={`relative ${compact ? "min-h-[240px] md:min-h-[360px]" : "min-h-[360px] md:min-h-[520px]"}`}>
+    <section className={`relative ${compact ? "min-h-[320px] md:min-h-[360px]" : "min-h-[360px] md:min-h-[520px]"}`}>
       <img
         src={image}
         alt=""
@@ -32,14 +32,14 @@ export function HeroSection({
         aria-hidden="true"
       />
 
-      {scrim === "full" && <div className="absolute inset-0 bg-nearly-black/55" />}
-      {scrim === "lr"   && <div className="absolute inset-0 bg-gradient-to-r from-nearly-black/75 via-nearly-black/30 via-60% to-transparent" />}
-      {scrim === "tb"   && <div className="absolute inset-0 bg-gradient-to-b from-nearly-black/75 via-nearly-black/30 via-60% to-transparent" />}
-      {scrim === "bt"   && <div className="absolute inset-0 bg-gradient-to-t from-nearly-black/75 via-nearly-black/30 via-60% to-transparent" />}
+      {scrim === "full" && <div className="absolute inset-0 bg-nearly-black/40" />}
+      {scrim === "lr"   && <div className="absolute inset-0 bg-gradient-to-r from-nearly-black/55 via-nearly-black/15 via-60% to-transparent" />}
+      {scrim === "tb"   && <div className="absolute inset-0 bg-gradient-to-b from-nearly-black/55 via-nearly-black/15 via-60% to-transparent" />}
+      {scrim === "bt"   && <div className="absolute inset-0 bg-gradient-to-t from-nearly-black/55 via-nearly-black/15 via-60% to-transparent" />}
 
       {(heading || ctaLabel) && (
         <div className={`absolute inset-0 z-10 flex ${scrim === "bt" ? "items-end pb-[var(--section-pb)]" : "items-center"}${isCenter ? " justify-center" : ""}`}>
-          <div className={`w-full px-[var(--section-px)] flex flex-col gap-6${isCenter ? " items-center" : ""}`}>
+          <div className={`w-full px-[var(--section-px)] flex flex-col gap-4 md:gap-6${isCenter ? " items-center" : ""}`}>
             {heading && (
               <h1
                 className={`font-bold text-cookie-dough${isCenter ? " text-center" : ""}`}
