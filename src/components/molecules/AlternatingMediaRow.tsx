@@ -21,7 +21,7 @@ export function AlternatingMediaRow({
 }: AlternatingMediaRowProps) {
   return (
     <div
-      className={`flex flex-col md:flex-row md:items-stretch md:gap-8 md:px-[var(--section-px)] md:max-w-[var(--page-max-w)] md:mx-auto ${
+      className={`flex flex-col pb-2 md:pb-0 md:flex-row md:items-stretch md:gap-8 md:px-[var(--section-px)] md:max-w-[var(--page-max-w)] md:mx-auto ${
         imagePosition === "right" ? "md:flex-row-reverse" : ""
       }`}
     >
@@ -37,7 +37,7 @@ export function AlternatingMediaRow({
 
       {/* Text — left-aligned on mobile always; mirrors image anchor on desktop */}
       <div
-        className={`flex flex-col justify-center gap-4 px-[var(--section-px)] pt-5 md:px-0 md:py-6 md:flex-1 text-left ${
+        className={`flex flex-col justify-center gap-4 px-[var(--section-px)] pt-3 md:px-0 md:py-6 md:flex-1 text-left ${
           imagePosition === "right" ? "md:text-right" : ""
         }`}
       >
