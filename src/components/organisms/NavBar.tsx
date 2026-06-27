@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/atoms/Button";
 import { NavLink } from "@/components/molecules/NavLink";
-import { IconMark } from "@/components/organisms/IconMark";
+import { IconMark } from "@/components/atoms/IconMark";
 import { MobileMenu } from "@/components/organisms/MobileMenu";
 import type { ChapterConfig } from "@/types/content";
 
@@ -61,7 +61,7 @@ export function NavBar({ chapter }: NavBarProps) {
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden text-nearly-black hover:text-deep-blueklyn transition-colors"
+            className="md:hidden text-really-dark-grey hover:text-deep-blueklyn transition-colors"
             onClick={() => setMenuOpen(true)}
             aria-label="Open menu"
           >

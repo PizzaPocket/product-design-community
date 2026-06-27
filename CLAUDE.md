@@ -6,15 +6,41 @@
 
 ```
 src/components/
-  atoms/       — indivisible primitives (Button, Icon, Divider, Tag)
-  molecules/   — atoms composed together; no page-specific logic (AlertBar, NavLink, InitiativeCard, …)
-  organisms/   — full UI sections with optional local state (NavBar, Footer, HeroSection, PhotoCarousel, …)
+  atoms/       — indivisible primitives: no children components, no composed layout
+  molecules/   — layout patterns composed from atoms; zero page-specific logic or content
+  organisms/   — full-width page sections; may compose molecules + atoms; may hold local state
   templates/   — page-level layout shells; accept content props, render no real data
 ```
 
-Pages live in `app/` and are thin: they import a template, pass a chapter config, done. No UI logic in page files.
+Pages live in `app/` and are thin: they import organisms/templates, pass content from `src/content/`, done. No UI logic in page files.
 
-### 2. Global CSS tokens — no raw values in components
+**Level tests:**
+- Atom: renders a single element or SVG. No children that are components. Examples: `Button`, `Divider`, `IconMark`, `BrandLogo`
+- Molecule: composes atoms into a reusable layout unit. No hardcoded copy. Examples: `NavLink`, `ActionCard`, `PhotoCard`, `AlternatingMediaRow`
+- Organism: owns a full page section — has a `SectionWrapper`, a heading, its own vertical padding. Examples: `NavBar`, `HeroSection`, `ValuePillars`, `LogoGrid`, `CallToAction`
+
+**If it has `SectionWrapper` inside it → organism. If it's a card or row pattern → molecule. If it renders one element → atom.**
+
+### 2. Component naming — describe the pattern, not the content
+
+Names must describe the **interaction or layout pattern**, never the specific content that happens to use it.
+
+✅ `ActionCard` — a card with optional image, heading, body, and a CTA button
+✅ `PhotoCard` — a linked card with a full-bleed background photo and overlay text
+✅ `ContentCard` — an image + heading + body stack, no CTA
+✅ `PublicationCard` — cover image + metadata label + title + CTA
+✅ `CallToAction` — full-width section with a heading and a primary button
+✅ `AlternatingMediaRow` — image + text row that flips sides
+
+❌ `InitiativeCard` — names the data, not the pattern
+❌ `EventTypeCard` — names the data, not the pattern
+❌ `PartnershipTier` — names the domain concept, not the UI
+❌ `ZineCard` — names the content type, not the pattern
+❌ `DonationSupport` — names the purpose, not the UI pattern
+
+If two components share the same layout pattern, they should be the same component — not two separately named ones.
+
+### 3. Global CSS tokens — no raw values in components
 
 All design values are defined once in `src/app/globals.css` (`@theme` block + `:root`). Tailwind utilities are generated from these tokens automatically.
 
@@ -25,17 +51,17 @@ All design values are defined once in `src/app/globals.css` (`@theme` block + `:
 
 Changing a color = one line in `globals.css`. That's the contract.
 
-### 3. Abstract over local — always prefer reusable patterns
+### 4. Abstract over local — always prefer reusable patterns
 
 Before writing any JSX, ask: *could this be a reusable atom or molecule?*
 
-✅ `<InitiativeCard title={…} description={…} ctaHref={…} />` used everywhere
+✅ `<ActionCard title={…} description={…} ctaHref={…} />` used everywhere
 ❌ `<div className="…">Career Coaching<p>Led by Sangeetha…</p></div>` hardcoded in one page
 
 Chapter-specific content (copy, links, team lists) lives in `src/content/[chapter].ts` data files.
 Component files contain zero hard-coded content strings.
 
-### 4. TypeScript interfaces before components
+### 5. TypeScript interfaces before components
 
 Content shape is defined in `src/types/content.ts` before any page or template is written.
 Props must be typed. No `any`. No untyped objects.

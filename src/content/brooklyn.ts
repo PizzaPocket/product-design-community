@@ -1,4 +1,5 @@
 import type { ChapterConfig } from "@/types/content";
+import type { LogoItem } from "@/content/pdc";
 
 export const brooklyn: ChapterConfig = {
   slug: "brooklyn",
@@ -34,14 +35,26 @@ export const brooklyn: ChapterConfig = {
     heading: "What's on over the Bridge",
     image: "/images/brooklyn/hero.webp",
     textAlign: "center",
-    scrim: true,
+    scrim: "tb",
     compact: true,
+    ctaLabel: "Go to events",
+    ctaHref: "https://lu.ma/bkproductdesign",
+    ctaVariant: "primary-alt",
   },
 
   about: {
     heading: "About us",
-    body: "Brooklyn Product Design has been bringing together designers in New York since 2017. We create space for honest conversations, unexpected connections, and the kind of learning that only happens when people get together in a room.",
+    body: "Since 2017, Brooklyn Product Design has been a place where designers cross the bridge, literally and figuratively, to connect, learn, and create together. From humble beginnings to thousands of members strong, we've grown into a cornerstone of NYC's design scene.",
+    paragraphs: [
+      "Brooklyn Product Design began in 2017 with a simple idea: to bring people together through curiosity, creativity, and shared learning. What started as small gatherings at Fuzz in Williamsburg has grown into a thriving community of over 5,600 Meetup members and 600 Luma subscribers.",
+      "We come together to learn, share, and grow, exploring everything from design systems to AI, ethics, and the creative intersections shaping our field. Our events remain grassroots, collaborative, and deeply human, led by volunteers who care about making design accessible and meaningful for all.",
+      "We are a non-commercial, volunteer-run collective shaped by the people who show up, share their time, and give something back. We believe that thoughtful design deserves a thoughtful community behind it.",
+      "Our events are intentionally free or low-cost. We partner with generous hosts and sponsors to keep the momentum going and provide spaces that invite reflection, celebration, and experimentation.",
+      "You don't need a job title to belong here. Whether you're curious, starting out, switching fields, or a dozen years into product design, you are welcome. Come learn, teach, or just sit in the back with a coffee and take it all in.",
+    ],
   },
+
+  volunteerHref: "https://forms.gle/mobrphDchV83EdQK9",
 
   stats: [
     { value: "2017", label: "Founded" },
@@ -69,21 +82,21 @@ export const brooklyn: ChapterConfig = {
 
   eventTypes: [
     {
-      title: "Lightning Talks",
+      title: "Lightning talks",
       description:
-        "Short, focused talks from designers in the community sharing what they've learned, built, or gotten wrong. Fast-paced, honest, and always worth your evening.",
+        "Quick, rapid-fire sessions where community members share what they are exploring, building, or learning about. It is designed to spark curiosity, introduce emerging ideas, and uplift a broad range of perspectives.",
       image: "/images/brooklyn/event_lightning_talks.webp",
     },
     {
-      title: "Fireside Chats",
+      title: "Fireside chats",
       description:
-        "In-depth conversations with experienced designers on craft, career, and process. Less stage, more dialogue — the kind of talk you'd want to have over coffee.",
+        "Friendly and community-centered discussions that give attendees direct access to experienced practitioners. No slides, just meaningful conversation.",
       image: "/images/brooklyn/event_fireside.webp",
     },
     {
-      title: "Happy Hour",
+      title: "Happy hour socials",
       description:
-        "Informal gatherings to unwind, swap stories, and meet the designers working around you. No agenda, no slides — just good people and better drinks.",
+        "A casual, after-hours meetup where the BKPD community can unwind, share stories, and build genuine relationships beyond structured programming.",
       image: "/images/brooklyn/event_happy_hour.webp",
     },
   ],
@@ -91,6 +104,7 @@ export const brooklyn: ChapterConfig = {
   team: [
     { name: "Brian Hui", role: "Co-Organizer, Design", photo: "/images/brooklyn/team_1.jpeg" },
     { name: "Jose Arias", role: "Co-Organizer, Design", photo: "/images/brooklyn/team_2.jpeg" },
+    { name: "Collin Hadley", role: "Co-Organizer", photo: "/images/brooklyn/team_5.png" },
   ],
 
   alumniTeam: [
@@ -98,3 +112,17 @@ export const brooklyn: ChapterConfig = {
     { name: "Leonard Reese", role: "Founder, Advisor", photo: "/images/brooklyn/team_4.png" },
   ],
 };
+
+export const bkPartnerLogos: LogoItem[] = [
+  { src: "/logos/partners/partner_01.png", alt: "Adobe" },
+  { src: "/images/losangeles/partner_2.svg", alt: "Bamboo Crowd" },
+  { src: "/logos/partners/partner_02.png", alt: "BrainStation" },
+  { src: "/logos/partners/partner_03.png", alt: "Capital One Bank" },
+  { src: "/logos/partners/partner_04.png", alt: "Duolingo" },
+  { src: "/logos/partners/partner_05.png", alt: "Framer" },
+  { src: "/logos/partners/partner_06.png", alt: "General Assembly" },
+  { src: "/logos/partners/partner_09.png", alt: "LottieFiles" },
+  { src: "/logos/partners/partner_10.png", alt: "Mastercard" },
+  { src: "/logos/partners/nyu.svg", alt: "NYU" },
+  { src: "/logos/partners/partner_18.png", alt: "Yext" },
+];

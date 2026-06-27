@@ -1,9 +1,12 @@
 import { NavBar } from "@/components/organisms/NavBar";
 import { Footer } from "@/components/organisms/Footer";
 import { HeroSection } from "@/components/organisms/HeroSection";
+import { Shelf } from "@/components/organisms/Shelf";
 import { SectionWrapper } from "@/components/organisms/SectionWrapper";
+import { LogoGrid } from "@/components/organisms/LogoGrid";
 import { AlternatingMediaRow } from "@/components/molecules/AlternatingMediaRow";
-import { brooklyn } from "@/content/brooklyn";
+import { Button } from "@/components/atoms/Button";
+import { brooklyn, bkPartnerLogos } from "@/content/brooklyn";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -23,19 +26,35 @@ export default function BrooklynPage() {
           textAlign={brooklyn.hero.textAlign}
           scrim={brooklyn.hero.scrim}
           compact={brooklyn.hero.compact}
+          ctaLabel={brooklyn.hero.ctaLabel}
+          ctaHref={brooklyn.hero.ctaHref}
+          ctaVariant={brooklyn.hero.ctaVariant}
         />
 
+        {/* About blurb */}
+        {brooklyn.about && (
+          <Shelf size="sm" background="bg-literally-white" className="flex flex-col items-center gap-6">
+            <p className="w-full text-really-dark-grey" style={{ fontSize: "var(--text-b1)", lineHeight: "var(--lh-b1)" }}>
+              {brooklyn.about.body}
+            </p>
+            <Button variant="secondary" href="/brooklyn/about">
+              More about us
+            </Button>
+          </Shelf>
+        )}
+
+        {/* Events we host */}
         {brooklyn.eventTypes && (
-          <section className="pb-20 flex flex-col gap-12 pt-16">
+          <Shelf bleed className="flex flex-col gap-6">
             <SectionWrapper as="div">
               <h2
                 className="font-bold text-nearly-black text-center"
                 style={{ fontSize: "var(--text-h2)", lineHeight: "var(--lh-h2)" }}
               >
-                What we get up to
+                Events we host
               </h2>
             </SectionWrapper>
-            <div className="flex flex-col gap-16">
+            <div className="flex flex-col gap-8">
               {brooklyn.eventTypes.map((event, i) => (
                 <AlternatingMediaRow
                   key={event.title}
@@ -46,8 +65,23 @@ export default function BrooklynPage() {
                 />
               ))}
             </div>
-          </section>
+          </Shelf>
         )}
+
+        {/* Partner logos */}
+        <LogoGrid
+          logos={bkPartnerLogos}
+          sectionHeading="Thanks to our partners & supporters"
+          background="bg-literally-white"
+          footer={
+            <p
+              className="text-really-dark-grey text-center max-w-xl"
+              style={{ fontSize: "var(--text-b2)", lineHeight: "var(--lh-b2)" }}
+            >
+              We&apos;re entirely volunteer-run and not-for-profit. Donations big or small help us cover essentials like printing, snacks, and web hosting. It&apos;s a small way to make a big difference.
+            </p>
+          }
+        />
       </main>
 
       <Footer chapter={brooklyn} />

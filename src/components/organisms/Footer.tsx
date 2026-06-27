@@ -14,7 +14,7 @@ export function Footer({ chapter }: FooterProps) {
 
   return (
     <footer className="bg-really-dark-grey text-literally-white">
-      <div className="px-[var(--section-px)] py-16">
+      <div className="px-[var(--section-px)] py-[var(--section-py-sm)]">
         {/* Desktop: 4-column grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
 
@@ -57,7 +57,7 @@ export function Footer({ chapter }: FooterProps) {
               className="text-just-grey font-bold text-sm uppercase"
               style={{ letterSpacing: "var(--ls-label)" }}
             >
-              Check out events
+              Get involved
             </span>
             <ul className="flex flex-col gap-3">
               {footer.involvedLinks.map((link) => (

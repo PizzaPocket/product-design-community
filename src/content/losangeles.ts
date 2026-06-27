@@ -1,4 +1,5 @@
 import type { ChapterConfig } from "@/types/content";
+import type { LogoItem } from "@/content/pdc";
 
 export const losangeles: ChapterConfig = {
   slug: "losangeles",
@@ -34,14 +35,23 @@ export const losangeles: ChapterConfig = {
     heading: "What's in LA",
     image: "/images/losangeles/hero.png",
     textAlign: "center",
-    scrim: true,
+    scrim: "bt",
     compact: true,
   },
 
   about: {
     heading: "About us",
-    body: "Los Angeles Product Design was founded in 2022 to create a dedicated home for product designers across LA. In a city full of creative energy and diverse industries, we bring together designers to learn from each other, find community, and grow their craft.",
+    body: "Since 2022, Los Angeles Product Design has been a place where designers cross the bridge, literally and figuratively, to connect, learn, and create together. From humble beginnings post-COVID to 1K+ members, we've grown into a cornerstone of Los Angeles's design scene.",
+    paragraphs: [
+      "Los Angeles Product Design began in 2022 as a way to bring people together around shared curiosity, creative exchange, and honest conversations about product design. The first sessions were small and casual over coffee.",
+      "As Los Angeles reopened, our community grew alongside it. What started with a few designers has expanded into a collective of over 1,100 repeat event attendees. Some come to learn and network. Others come to speak, to share, or to give back.",
+      "We are a non-commercial, volunteer-run collective shaped by the people who show up, share their time, and give something back. We believe that thoughtful design deserves a thoughtful community behind it.",
+      "Our events are intentionally free or low-cost. We've partnered with generous hosts and sponsors to keep the momentum going and provide the spaces to create room for reflection, celebration, and experimentation.",
+      "You don't need a job title to belong here. Whether you're curious, starting out, switching fields, or a dozen years into product design, you are welcome. Come learn, teach, or just sit in the back with a coffee and take it all in.",
+    ],
   },
+
+  volunteerHref: "https://forms.gle/yT7dE3byeGCYrPos6",
 
   stats: [
     { value: "2022", label: "Founded" },
@@ -68,17 +78,17 @@ export const losangeles: ChapterConfig = {
 
   initiatives: [
     {
-      title: "Career Coaching",
-      description:
-        "One-on-one career coaching sessions with experienced product designers.",
-      ctaLabel: "Book a session",
+      title: "Career coaching",
+      description: "Led by Lillian, our sessions focus on guiding members from portfolio building to professional networking skills, to prepare designers for the ever-changing market.",
+      image: "/images/losangeles/mentor.jpeg",
+      ctaLabel: "Sign up",
       ctaHref: "https://forms.gle/yMW8SN6YGpCdMyGP6",
     },
     {
-      title: "Speaker Chats",
-      description:
-        "Sign up to speak at an upcoming LA Product Design event.",
-      ctaLabel: "Sign up to speak",
+      title: "Speaker chats",
+      description: "Interested to give a knowledge share or practice a design pitch?",
+      image: "/images/losangeles/photo.webp",
+      ctaLabel: "Sign up",
       ctaHref: "https://forms.gle/yMW8SN6YGpCdMyGP6",
     },
   ],
@@ -87,13 +97,22 @@ export const losangeles: ChapterConfig = {
     { name: "Lillian Yang",     role: "Founder / Organizer", photo: "/images/losangeles/team_1.jpeg" },
     { name: "Tiffany Lim",      role: "Partnerships",         photo: "/images/losangeles/team_2.jpeg" },
     { name: "Kevin Ulloa",      role: "Design",               photo: "/images/losangeles/team_3.jpg" },
-    { name: "Leonard Reese",    role: "Co-Founder",           photo: "/images/losangeles/team_4.png" },
+    { name: "José Arias",       role: "Design",               photo: "/images/losangeles/alumni_1.jpeg" },
     { name: "Brian Hui",        role: "Content / Design",     photo: "/images/losangeles/alumni_2.jpeg" },
     { name: "Annie Chuong",     role: "Logistics",            photo: "/images/losangeles/alumni_3.jpg" },
     { name: "Sneha Lakshmanan", role: "Photography",          photo: "/images/losangeles/alumni_4.jpeg" },
+    { name: "Leonard Reese",    role: "Advisor",              photo: "/images/losangeles/team_4.png" },
   ],
 
   alumniTeam: [
     { name: "Samantha Li", role: "Alumni" },
   ],
 };
+
+export const laPartnerLogos: LogoItem[] = [
+  { src: "/images/losangeles/partner_1.png", alt: "Tinder" },
+  { src: "/images/losangeles/partner_2.svg", alt: "Bamboo Crowd" },
+  { src: "/images/losangeles/partner_3.png", alt: "Framer" },
+  { src: "/images/losangeles/partner_4.png", alt: "General Assembly" },
+  { src: "/images/losangeles/partner_5.png", alt: "LottieFiles" },
+];

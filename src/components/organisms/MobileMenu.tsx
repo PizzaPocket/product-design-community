@@ -2,7 +2,7 @@
 
 import { X } from "lucide-react";
 import { Button } from "@/components/atoms/Button";
-import { IconMark } from "@/components/organisms/IconMark";
+import { IconMark } from "@/components/atoms/IconMark";
 import type { ChapterConfig } from "@/types/content";
 
 interface MobileMenuProps {

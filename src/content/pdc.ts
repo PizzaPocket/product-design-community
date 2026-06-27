@@ -102,8 +102,8 @@ export const pdcPartnerLogos: LogoItem[] = [
   { src: "/logos/partners/partner_14.png", alt: "Pratt Institute" },
   { src: "/logos/partners/partner_15.png", alt: "ShopBack" },
   { src: "/logos/partners/partner_16.png", alt: "StashAway" },
-  { src: "/logos/partners/partner_17.png", alt: "Taskade" },
-  { src: "/logos/partners/partner_18.png", alt: "Tinder" },
+  { src: "/logos/partners/partner_17.png", alt: "Tinder" },
+  { src: "/logos/partners/partner_18.png", alt: "Yext" },
 ];
 
 export const pdcChapters = [

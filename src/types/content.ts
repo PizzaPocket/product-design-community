@@ -20,7 +20,7 @@ export interface FooterConfig {
 
 export interface TeamMember {
   name: string;
-  role: string;
+  role?: string;
   photo?: string;
 }
 
@@ -41,15 +41,19 @@ export interface InitiativeItem {
 export interface ZineVolume {
   volume: number;
   title: string;
+  description?: string;
   href: string;
   cover?: string;
+  ctaLabel?: string;
 }
 
 export interface PartnershipTierItem {
   title: string;
   description: string;
+  items?: string[];
   ctaLabel: string;
   ctaHref: string;
+  ctaIcon?: "coffee";
   image?: string;
 }
 
@@ -77,14 +81,16 @@ export interface ChapterConfig {
     body?: string;
     ctaLabel?: string;
     ctaHref?: string;
+    ctaVariant?: "primary" | "secondary" | "tertiary" | "primary-alt";
     image: string;
     textAlign?: "center" | "left";
-    scrim?: boolean;
+    scrim?: "lr" | "tb" | "bt" | "full" | false;
     compact?: boolean;
   };
   about?: {
     heading: string;
     body: string;
+    paragraphs?: string[];
   };
   stats?: StatItem[];
   values?: ValuePillar[];
@@ -92,5 +98,7 @@ export interface ChapterConfig {
   initiatives?: InitiativeItem[];
   team?: TeamMember[];
   alumniTeam?: TeamMember[];
-  partnerLogos?: string[];
+  carouselImages?: string[];
+  volunteerHref?: string;
+  donateHref?: string;
 }

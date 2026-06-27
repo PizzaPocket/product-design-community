@@ -20,7 +20,7 @@ export function NavLink({ label, href, onClick, className = "" }: NavLinkProps) 
       onClick={onClick}
       {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       className={`py-2 font-bold uppercase transition-colors duration-150 ${
-        isActive ? "text-deep-blueklyn" : "text-nearly-black hover:text-deep-blueklyn"
+        isActive ? "text-deep-blueklyn" : "text-really-dark-grey hover:text-deep-blueklyn"
       } ${className}`}
       style={{ fontSize: "var(--text-label)", letterSpacing: "var(--ls-label)" }}
     >

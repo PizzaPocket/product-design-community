@@ -1,11 +1,12 @@
 import { NavBar } from "@/components/organisms/NavBar";
 import { Footer } from "@/components/organisms/Footer";
 import { HeroSection } from "@/components/organisms/HeroSection";
-import { ValuePillars } from "@/components/organisms/ValuePillars";
-import { PartnerLogoGrid } from "@/components/organisms/PartnerLogoGrid";
+import { ImageColumns } from "@/components/organisms/ImageColumns";
+import { LogoGrid } from "@/components/organisms/LogoGrid";
+import { Shelf } from "@/components/organisms/Shelf";
 import { SectionWrapper } from "@/components/organisms/SectionWrapper";
 import { AlternatingMediaRow } from "@/components/molecules/AlternatingMediaRow";
-import { ChapterCard } from "@/components/molecules/ChapterCard";
+import { PhotoCard } from "@/components/molecules/PhotoCard";
 import {
   pdc,
   pdcEventTypes,
@@ -28,23 +29,21 @@ export default function HomePage() {
 
       <main>
         <HeroSection
-          heading={pdc.hero.heading}
           image={pdc.hero.image}
+          scrim={false}
         />
 
-        {/* Subtitle — centered, sits directly below the hero */}
-        <SectionWrapper className="py-10 text-center">
+        <Shelf size="sm" background="bg-literally-white" className="text-center">
           <p
-            className="text-nearly-black"
-            style={{ fontSize: "var(--text-b1)", lineHeight: "var(--lh-b1)" }}
+            className="text-really-dark-grey font-medium max-w-2xl mx-auto"
+            style={{ fontSize: "var(--text-quote)", lineHeight: "var(--lh-quote)" }}
           >
             {pdc.hero.body}
           </p>
-        </SectionWrapper>
+        </Shelf>
 
-        {/* Events — heading is max-width constrained; rows handle their own max-width so images can bleed on mobile */}
-        <section className="pb-20 flex flex-col gap-12">
-          <SectionWrapper as="div" className="pt-0">
+        <Shelf bleed className="flex flex-col gap-6">
+          <SectionWrapper as="div">
             <h2
               className="font-bold text-nearly-black text-center"
               style={{ fontSize: "var(--text-h2)", lineHeight: "var(--lh-h2)" }}
@@ -52,7 +51,7 @@ export default function HomePage() {
               Events uplifting local designers
             </h2>
           </SectionWrapper>
-          <div className="flex flex-col gap-16">
+          <div className="flex flex-col gap-8">
             {pdcEventTypes.map((event, i) => (
               <AlternatingMediaRow
                 key={event.title}
@@ -63,19 +62,17 @@ export default function HomePage() {
               />
             ))}
           </div>
-        </section>
+        </Shelf>
 
-        {/* Community values */}
-        <ValuePillars pillars={pdcValuePillars} />
+        <ImageColumns pillars={pdcValuePillars} />
 
-        {/* Partners */}
-        <PartnerLogoGrid
+        <LogoGrid
           logos={pdcPartnerLogos}
           sectionHeading="Thanks to our partners & supporters"
+          background="bg-literally-white"
         />
 
-        {/* Chapters */}
-        <SectionWrapper id="chapters" className="py-20 flex flex-col gap-10">
+        <Shelf id="chapters" className="flex flex-col gap-6">
           <h2
             className="font-bold text-nearly-black text-center"
             style={{ fontSize: "var(--text-h2)", lineHeight: "var(--lh-h2)" }}
@@ -84,10 +81,10 @@ export default function HomePage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {pdcChapters.map((chapter) => (
-              <ChapterCard key={chapter.href} {...chapter} />
+              <PhotoCard key={chapter.href} {...chapter} />
             ))}
           </div>
-        </SectionWrapper>
+        </Shelf>
       </main>
 
       <Footer chapter={pdc} />

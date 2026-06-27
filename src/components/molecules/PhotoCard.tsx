@@ -1,10 +1,10 @@
-interface ChapterCardProps {
+interface PhotoCardProps {
   name: string;
   href: string;
   image: string;
 }
 
-export function ChapterCard({ name, href, image }: ChapterCardProps) {
+export function PhotoCard({ name, href, image }: PhotoCardProps) {
   return (
     <a href={href} className="group no-underline block">
       <div className="relative aspect-[2/1] rounded-image overflow-hidden bg-just-grey/20">

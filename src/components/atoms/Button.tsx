@@ -1,7 +1,8 @@
 import React from "react";
+import { ExternalLink } from "lucide-react";
 
 export interface ButtonProps {
-  variant?: "primary" | "secondary" | "tertiary";
+  variant?: "primary" | "secondary" | "tertiary" | "primary-alt";
   uppercase?: boolean;
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
@@ -16,15 +17,17 @@ export interface ButtonProps {
 
 const variantStyles: Record<string, string> = {
   primary:
-    "bg-nearly-black text-literally-white hover:bg-deep-blueklyn disabled:bg-just-grey disabled:cursor-not-allowed",
+    "px-4 py-2.5 bg-nearly-black text-literally-white hover:bg-deep-blueklyn disabled:bg-just-grey disabled:cursor-not-allowed",
   secondary:
-    "border border-nearly-black hover:border-deep-blueklyn hover:text-deep-blueklyn disabled:border-just-grey disabled:text-just-grey disabled:cursor-not-allowed",
+    "px-4 py-2.5 border border-nearly-black hover:border-deep-blueklyn hover:text-deep-blueklyn disabled:border-just-grey disabled:text-just-grey disabled:cursor-not-allowed",
   tertiary:
-    "hover:text-deep-blueklyn disabled:text-just-grey disabled:cursor-not-allowed",
+    "text-nearly-black hover:text-deep-blueklyn disabled:text-just-grey disabled:cursor-not-allowed",
+  "primary-alt":
+    "px-4 py-2.5 bg-egg-custard-tart text-nearly-black hover:bg-deep-blueklyn hover:text-literally-white disabled:bg-just-grey disabled:text-literally-white disabled:cursor-not-allowed",
 };
 
 const base =
-  "inline-flex items-center gap-2 px-4 py-2 font-bold text-base rounded-[var(--radius-button)] transition-colors duration-150 cursor-pointer";
+  "inline-flex items-center gap-2 font-bold text-base rounded-[var(--radius-button)] transition-colors duration-150 cursor-pointer";
 
 export function Button({
   variant = "primary",
@@ -48,6 +51,8 @@ export function Button({
     .filter(Boolean)
     .join(" ");
 
+  const trailingIcon = rightIcon ?? (target === "_blank" ? <ExternalLink size={14} strokeWidth={2.5} aria-hidden="true" /> : undefined);
+
   if (href) {
     return (
       <a
@@ -59,7 +64,7 @@ export function Button({
       >
         {leftIcon}
         {children}
-        {rightIcon}
+        {trailingIcon}
       </a>
     );
   }
@@ -72,7 +77,7 @@ export function Button({
     >
       {leftIcon}
       {children}
-      {rightIcon}
+      {trailingIcon}
     </button>
   );
 }
