@@ -1,1 +1,96 @@
-@AGENTS.md
+# PDC Website — Claude Code Guidelines
+
+## Architecture Principles
+
+### 1. Atomic Design — component hierarchy is strict
+
+```
+src/components/
+  atoms/       — indivisible primitives (Button, Icon, Divider, Tag)
+  molecules/   — atoms composed together; no page-specific logic (AlertBar, NavLink, InitiativeCard, …)
+  organisms/   — full UI sections with optional local state (NavBar, Footer, HeroSection, PhotoCarousel, …)
+  templates/   — page-level layout shells; accept content props, render no real data
+```
+
+Pages live in `app/` and are thin: they import a template, pass a chapter config, done. No UI logic in page files.
+
+### 2. Global CSS tokens — no raw values in components
+
+All design values are defined once in `src/app/globals.css` (`@theme` block + `:root`). Tailwind utilities are generated from these tokens automatically.
+
+**Rule: raw hex values and px literals must never appear in component files.**
+
+✅ Use: `bg-deep-blueklyn`, `text-nearly-black`, `var(--color-deep-blueklyn)`, `var(--section-px)`
+❌ Never: `bg-[#409AF9]`, `style={{ color: '#1B1D1F' }}`, hardcoded spacing in className
+
+Changing a color = one line in `globals.css`. That's the contract.
+
+### 3. Abstract over local — always prefer reusable patterns
+
+Before writing any JSX, ask: *could this be a reusable atom or molecule?*
+
+✅ `<InitiativeCard title={…} description={…} ctaHref={…} />` used everywhere
+❌ `<div className="…">Career Coaching<p>Led by Sangeetha…</p></div>` hardcoded in one page
+
+Chapter-specific content (copy, links, team lists) lives in `src/content/[chapter].ts` data files.
+Component files contain zero hard-coded content strings.
+
+### 4. TypeScript interfaces before components
+
+Content shape is defined in `src/types/content.ts` before any page or template is written.
+Props must be typed. No `any`. No untyped objects.
+
+---
+
+## Tech Stack
+
+| | |
+|---|---|
+| Framework | Next.js 16 (App Router) |
+| Language | TypeScript |
+| Styles | Tailwind v4 (CSS-first, no tailwind.config.ts) |
+| Icons | lucide-react (Feather icon set) |
+| Carousel | embla-carousel-react |
+| Font | Figtree via next/font/google |
+| Deploy | Vercel (static export) |
+
+## Key Commands
+
+```bash
+npm run dev      # local dev server
+npm run build    # static export build
+npm run lint     # ESLint
+```
+
+## Adding a New Component
+
+1. Decide its atomic level (atom / molecule / organism / template)
+2. Use only Tailwind token classes — no raw hex or px values
+3. Content comes in via props, not hardcoded strings
+4. If it needs Figma reference: use Figma MCP at `http://127.0.0.1:3845/mcp` — see `.mcp.json`
+
+## Figma MCP
+
+Config is in `.mcp.json`. Use it to extract design specs for new components:
+
+```bash
+# Get design context for a node
+curl -s -X POST http://127.0.0.1:3845/mcp \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json, text/event-stream" \
+  -d '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"get_design_context","arguments":{"node_url":"https://www.figma.com/design/X3NlpKEHZu7UWFWoCmftHW/Scratch?node-id=597-XXXXX"}}}'
+```
+
+## Git
+
+- Committer: `leonard.d.reese@gmail.com` — always use SSH (not HTTPS) for remote operations
+- **Never add Claude as a co-author** in commit messages
+- Remote: `git@github.com:PizzaPocket/product-design-community.git`
+
+## Design Token Quick Reference
+
+Colors: `deep-blueklyn` (#409AF9) · `la-poolside` (#60DBDA) · `singapore-sling` (#F66363) · `egg-custard-tart` (#F8DA4D) · `cookie-dough` (#FFFAEF) · `nearly-black` (#1B1D1F) · `really-dark-grey` (#4A4A4A) · `just-grey` (#9C9C9C) · `literally-white` (#FFFFFF)
+
+Type: L preset (≥768px) / M preset (<768px) — see globals.css for full scale
+
+Breakpoints: `md` = 768px · `lg` = 1366px · `xl` = 1920px

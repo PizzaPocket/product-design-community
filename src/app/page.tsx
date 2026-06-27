@@ -1,65 +1,90 @@
-import Image from "next/image";
+import { NavBar } from "@/components/organisms/NavBar";
+import { Footer } from "@/components/organisms/Footer";
+import { HeroSection } from "@/components/organisms/HeroSection";
+import { ValuePillars } from "@/components/organisms/ValuePillars";
+import { PartnerLogoGrid } from "@/components/organisms/PartnerLogoGrid";
+import { SectionWrapper } from "@/components/organisms/SectionWrapper";
+import { EventTypeRow } from "@/components/molecules/EventTypeRow";
+import { ChapterCard } from "@/components/molecules/ChapterCard";
+import {
+  pdc,
+  pdcEventTypes,
+  pdcValuePillars,
+  pdcChapters,
+  pdcPartnerLogos,
+} from "@/content/pdc";
+import type { Metadata } from "next";
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: "Product Design Community",
+  description:
+    "Connecting the world's product design community through curiosity and shared learning.",
+};
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <>
+      <NavBar chapter={pdc} />
+
+      <main>
+        {/* Hero — no CTA button on PDC home */}
+        <HeroSection heading={pdc.hero.heading} image={pdc.hero.image} />
+
+        {/* Subtitle — centered, sits directly below the hero */}
+        <SectionWrapper className="py-10 text-center">
+          <p
+            className="text-nearly-black"
+            style={{ fontSize: "var(--text-b1)", lineHeight: "var(--lh-b1)" }}
+          >
+            {pdc.hero.body}
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+        </SectionWrapper>
+
+        {/* Events — no SectionWrapper wrapper; images are full-bleed on mobile */}
+        <section className="pb-20 flex flex-col gap-12">
+          <h2
+            className="font-bold text-nearly-black text-center px-[var(--section-px)]"
+            style={{ fontSize: "var(--text-h2)", lineHeight: "var(--lh-h2)" }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            Events uplifting local designers
+          </h2>
+          <div className="flex flex-col gap-16">
+            {pdcEventTypes.map((event, i) => (
+              <EventTypeRow
+                key={event.title}
+                {...event}
+                imagePosition={i % 2 === 0 ? "left" : "right"}
+              />
+            ))}
+          </div>
+        </section>
+
+        {/* Community values */}
+        <ValuePillars pillars={pdcValuePillars} />
+
+        {/* Partners */}
+        <PartnerLogoGrid
+          logos={pdcPartnerLogos}
+          sectionHeading="Thanks to our partners & supporters"
+        />
+
+        {/* Chapters */}
+        <SectionWrapper id="chapters" className="py-20 flex flex-col gap-10">
+          <h2
+            className="font-bold text-nearly-black text-center"
+            style={{ fontSize: "var(--text-h2)", lineHeight: "var(--lh-h2)" }}
           >
-            Documentation
-          </a>
-        </div>
+            Our Chapters
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {pdcChapters.map((chapter) => (
+              <ChapterCard key={chapter.href} {...chapter} />
+            ))}
+          </div>
+        </SectionWrapper>
       </main>
-    </div>
+
+      <Footer chapter={pdc} />
+    </>
   );
 }

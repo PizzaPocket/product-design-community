@@ -1,26 +1,75 @@
 @import "tailwindcss";
 
+@theme {
+  /* Brand colors */
+  --color-deep-blueklyn:    #409AF9;
+  --color-la-poolside:      #60DBDA;
+  --color-singapore-sling:  #F66363;
+  --color-egg-custard-tart: #F8DA4D;
+  --color-cookie-dough:     #FFFAEF;
+
+  /* Greyscale */
+  --color-nearly-black:     #1B1D1F;
+  --color-really-dark-grey: #4A4A4A;
+  --color-just-grey:        #9C9C9C;
+  --color-literally-white:  #FFFFFF;
+
+  /* Font — variable set on <html> by next/font/google */
+  --font-sans: var(--font-figtree), sans-serif;
+
+  /* Breakpoints */
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1366px;
+  --breakpoint-xl: 1920px;
+
+  /* Layout tokens accessible as Tailwind utilities */
+  --radius-button: 10px;
+  --radius-card:   8px;
+  --radius-image:  40px;
+}
+
+/* Type scale + layout vars — responsive, not Tailwind-controlled */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* L preset — applies at tablet, desktop, large (≥768px) */
+  --text-h1:    60px; --lh-h1:    1;
+  --text-h2:    32px; --lh-h2:    1.2;
+  --text-h3:    28px; --lh-h3:    1.4;
+  --text-b1:    20px; --lh-b1:    1.5;
+  --text-b2:    16px; --lh-b2:    1.6;
+  --text-label: 16px; --lh-label: 1.6; --ls-label: 0.08em;
+
+  /* Layout */
+  --section-px: 120px;
+  --nav-height: 74px;
+  --gap-nav:    24px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@media (max-width: 1365px) {
+  /* Tablet — layout adjusts, type stays on L preset */
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --section-px: 60px;
   }
 }
 
+@media (max-width: 767px) {
+  /* Mobile — type steps down to M preset */
+  :root {
+    --text-h1:    56px;
+    --text-h2:    28px;
+    --text-h3:    20px; --lh-h3: 1.3;
+    --text-b1:    18px; --lh-b1: 1.4;
+    --text-b2:    14px; --lh-b2: 1.5;
+    --text-label: 14px; --lh-label: 1.5;
+    --section-px: 24px;
+  }
+}
+
+/* Base styles */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-cookie-dough);
+  color: var(--color-nearly-black);
+  font-family: var(--font-sans);
+  font-size: var(--text-b2);
+  line-height: var(--lh-b2);
+  -webkit-font-smoothing: antialiased;
 }
