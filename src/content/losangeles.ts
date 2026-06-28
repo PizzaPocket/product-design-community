@@ -80,7 +80,7 @@ export const losangeles: ChapterConfig = {
     {
       title: "Career coaching",
       description: "Led by Lillian, our sessions focus on guiding members from portfolio building to professional networking skills, to prepare designers for the ever-changing market.",
-      image: "/images/losangeles/mentor.jpeg",
+      image: "/images/losangeles/mentor.png",
       ctaLabel: "Sign up",
       ctaHref: "https://forms.gle/yMW8SN6YGpCdMyGP6",
     },
