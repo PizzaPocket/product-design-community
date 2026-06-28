@@ -35,7 +35,7 @@ const linkBase = "font-bold uppercase transition-colors py-1.5 block";
 const linkStyle = `${linkBase} text-just-grey hover:text-nearly-black`;
 const subLinkStyle = "block text-just-grey hover:text-nearly-black transition-colors py-1 pl-3 border-l border-just-grey/30 hover:border-nearly-black";
 
-export function SidebarNav() {
+export function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
   const [open, setOpen] = useState<Record<string, boolean>>({});
 
   const toggle = (label: string) =>
@@ -65,6 +65,7 @@ export function SidebarNav() {
                   <a
                     key={child.href}
                     href={child.href}
+                    onClick={onNavigate}
                     className={subLinkStyle}
                     style={{ fontSize: "var(--text-b2)", lineHeight: "var(--lh-b2)" }}
                   >
@@ -78,6 +79,7 @@ export function SidebarNav() {
           <a
             key={item.href}
             href={item.href}
+            onClick={onNavigate}
             className={linkStyle}
             style={{ fontSize: "var(--text-label)", letterSpacing: "var(--ls-label)" }}
           >

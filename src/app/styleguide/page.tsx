@@ -6,7 +6,7 @@ import { Shelf } from "@/components/organisms/Shelf";
 import { AlternatingMediaRow } from "@/components/molecules/AlternatingMediaRow";
 import { Card } from "@/components/molecules/Card";
 import { ProfileGrid } from "@/components/organisms/ProfileGrid";
-import { SidebarNav } from "./SidebarNav";
+import { StyleGuideShell } from "./StyleGuideShell";
 
 export const metadata: Metadata = { title: "Style Guide — PDC" };
 
@@ -86,7 +86,7 @@ function MetaLabel({ children }: { children: React.ReactNode }) {
 
 function SectionHeading({ id, children }: { id: string; children: React.ReactNode }) {
   return (
-    <div id={id} className="flex flex-col items-center gap-2 pb-6 border-b border-nearly-black scroll-mt-8 text-center">
+    <div id={id} className="flex flex-col items-center gap-2 pb-6 border-b border-nearly-black scroll-mt-20 text-center">
       <h2 className="font-bold" style={{ fontSize: "var(--text-h2)", lineHeight: "var(--lh-h2)" }}>
         {children}
       </h2>
@@ -182,26 +182,7 @@ function ComponentHeader({ level, file, children }: { level: string; file: strin
 
 export default function StyleGuidePage() {
   return (
-    <div className="min-h-screen bg-literally-white text-nearly-black">
-
-      {/* Sidebar — fixed so main content can be full width */}
-      <aside className="hidden lg:flex flex-col gap-10 fixed left-0 top-0 h-screen w-72 overflow-y-auto py-10 px-8 bg-cookie-dough border-r border-just-grey/20 z-10">
-        <div className="flex flex-col gap-1">
-          <a href="/" className="text-just-grey hover:text-nearly-black transition-colors" style={{ fontSize: "var(--text-b2)" }}>← PDC</a>
-          <span className="font-bold" style={{ fontSize: "var(--text-h3)", lineHeight: "var(--lh-h3)" }}>Style Guide</span>
-        </div>
-        <SidebarNav />
-      </aside>
-
-      {/* Mobile header */}
-      <header className="lg:hidden fixed top-0 inset-x-0 z-50 bg-literally-white border-b border-just-grey/20 flex items-center gap-3 px-6" style={{ height: "var(--nav-height)" }}>
-        <a href="/" className="text-just-grey hover:text-nearly-black transition-colors" style={{ fontSize: "var(--text-b2)" }}>← PDC</a>
-        <span className="text-just-grey" aria-hidden>/</span>
-        <span className="font-bold" style={{ fontSize: "var(--text-b2)" }}>Style Guide</span>
-      </header>
-
-      {/* Main — offset by fixed sidebar on desktop, by mobile header height on mobile */}
-      <main className="lg:ml-72 pt-[var(--nav-height)] lg:pt-0">
+    <StyleGuideShell>
 
         {/* ── INTRO ── */}
         <Shelf className="flex flex-col gap-4 border-b border-just-grey/20">
@@ -261,13 +242,13 @@ export default function StyleGuidePage() {
         <Shelf background="bg-cookie-dough" className="flex flex-col gap-12">
           <SectionHeading id="colors">Colors</SectionHeading>
           <div className="flex flex-col gap-10">
-            <div id="colors-brand" className="flex flex-col gap-4 scroll-mt-8">
+            <div id="colors-brand" className="flex flex-col gap-4 scroll-mt-20">
               <h3 className="font-semibold text-really-dark-grey uppercase" style={{ fontSize: "12px", letterSpacing: "0.1em" }}>Brand palette</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {brandColors.map((c) => <ColorSwatch key={c.cssVar} {...c} />)}
               </div>
             </div>
-            <div id="colors-neutral" className="flex flex-col gap-4 scroll-mt-8">
+            <div id="colors-neutral" className="flex flex-col gap-4 scroll-mt-20">
               <h3 className="font-semibold text-really-dark-grey uppercase" style={{ fontSize: "12px", letterSpacing: "0.1em" }}>Neutrals</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {neutralColors.map((c) => <ColorSwatch key={c.cssVar} {...c} />)}
@@ -394,7 +375,7 @@ export default function StyleGuidePage() {
         <Shelf background="bg-cookie-dough" className="flex flex-col gap-12">
           <SectionHeading id="buttons">Buttons</SectionHeading>
           <div className="flex flex-col gap-10">
-            <div id="buttons-variants" className="flex flex-col gap-4 scroll-mt-8">
+            <div id="buttons-variants" className="flex flex-col gap-4 scroll-mt-20">
               <div className="flex items-baseline justify-between">
                 <h3 className="font-semibold text-really-dark-grey uppercase" style={{ fontSize: "12px", letterSpacing: "0.1em" }}>Variants</h3>
                 <span className="text-just-grey" style={{ fontSize: "12px" }}>Hover is live</span>
@@ -412,7 +393,7 @@ export default function StyleGuidePage() {
                 <Button variant="primary-alt" disabled>Primary Alt</Button>
               </div>
             </div>
-            <div id="buttons-icons" className="flex flex-col gap-4 scroll-mt-8">
+            <div id="buttons-icons" className="flex flex-col gap-4 scroll-mt-20">
               <h3 className="font-semibold text-really-dark-grey uppercase" style={{ fontSize: "12px", letterSpacing: "0.1em" }}>With icons</h3>
               <div className="flex flex-wrap items-center gap-6 p-8 bg-literally-white rounded-lg">
                 <Button variant="primary" rightIcon={<ArrowRight size={16} />}>Right icon</Button>
@@ -424,7 +405,7 @@ export default function StyleGuidePage() {
                 <Token name="target=&quot;_blank&quot;" /> auto-adds <code className="font-mono text-deep-blueklyn" style={{ fontSize: "13px" }}>ExternalLink</code> as the right icon when no <Token name="rightIcon" /> is provided.
               </p>
             </div>
-            <div id="buttons-specs" className="flex flex-col gap-4 scroll-mt-8">
+            <div id="buttons-specs" className="flex flex-col gap-4 scroll-mt-20">
               <h3 className="font-semibold text-really-dark-grey uppercase" style={{ fontSize: "12px", letterSpacing: "0.1em" }}>Specs</h3>
               <div className="flex flex-col divide-y divide-just-grey/20 border border-just-grey/20 rounded-lg overflow-hidden">
                 {[
@@ -632,7 +613,6 @@ export default function StyleGuidePage() {
           ]} />
         </Shelf>
 
-      </main>
-    </div>
+    </StyleGuideShell>
   );
 }
