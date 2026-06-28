@@ -73,14 +73,6 @@ export default function BrooklynPage() {
           logos={bkPartnerLogos}
           sectionHeading="Thanks to our partners & supporters"
           background="bg-literally-white"
-          footer={
-            <p
-              className="text-really-dark-grey text-center max-w-xl"
-              style={{ fontSize: "var(--text-b2)", lineHeight: "var(--lh-b2)" }}
-            >
-              We&apos;re entirely volunteer-run and not-for-profit. Donations big or small help us cover essentials like printing, snacks, and web hosting. It&apos;s a small way to make a big difference.
-            </p>
-          }
         />
       </main>
 

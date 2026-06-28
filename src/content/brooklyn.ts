@@ -102,9 +102,9 @@ export const brooklyn: ChapterConfig = {
   ],
 
   team: [
-    { name: "Brian Hui", role: "Co-Organizer, Design", photo: "/images/brooklyn/team_1.jpeg" },
-    { name: "Jose Arias", role: "Co-Organizer, Design", photo: "/images/brooklyn/team_2.jpeg" },
-    { name: "Collin Hadley", role: "Co-Organizer", photo: "/images/brooklyn/team_5.png" },
+    { name: "Brian Hui", role: "Co-organizer", photo: "/images/brooklyn/team_1.jpeg" },
+    { name: "Jose Arias", role: "Co-organizer", photo: "/images/brooklyn/team_2.jpeg" },
+    { name: "Collin Hadley", role: "Co-organizer", photo: "/images/brooklyn/team_5.png" },
   ],
 
   alumniTeam: [
