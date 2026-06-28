@@ -1,6 +1,5 @@
-import { CalendarDays } from "lucide-react";
 import { SocialIconLink } from "@/components/molecules/SocialIconLink";
-import { LinkedInIcon, InstagramIcon } from "@/components/atoms/SocialIcons";
+import { LinkedInIcon, InstagramIcon, LumaIcon } from "@/components/atoms/SocialIcons";
 import type { ChapterConfig } from "@/types/content";
 // TODO: replace LinkedInIcon + InstagramIcon with exported SVG assets from Figma/brand kit
 
@@ -102,7 +101,7 @@ export function Footer({ chapter }: FooterProps) {
                 <SocialIconLink
                   href={footer.social.luma}
                   label="Events on Luma"
-                  icon={<CalendarDays size={20} />}
+                  icon={<LumaIcon size={20} />}
                 />
               )}
             </div>

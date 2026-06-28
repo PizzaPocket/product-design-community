@@ -1,5 +1,6 @@
 import React from "react";
 import { ExternalLink } from "lucide-react";
+import { LumaIcon } from "@/components/atoms/SocialIcons";
 
 export interface ButtonProps {
   variant?: "primary" | "secondary" | "tertiary" | "primary-alt";
@@ -51,7 +52,8 @@ export function Button({
     .filter(Boolean)
     .join(" ");
 
-  const trailingIcon = rightIcon ?? (target === "_blank" ? <ExternalLink size={14} strokeWidth={2.5} aria-hidden="true" /> : undefined);
+  const isLuma = href?.includes("lu.ma") || href?.includes("luma.com");
+  const trailingIcon = rightIcon ?? (target === "_blank" ? (isLuma ? <LumaIcon size={14} /> : <ExternalLink size={14} strokeWidth={2.5} aria-hidden="true" />) : undefined);
 
   if (href) {
     return (
