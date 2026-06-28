@@ -110,7 +110,7 @@ export const losangeles: ChapterConfig = {
 };
 
 export const laPartnerLogos: LogoItem[] = [
-  { src: "/images/losangeles/partner_1.png", alt: "Tinder" },
+  { src: "/logos/partners/partner_17.png", alt: "Tinder" },
   { src: "/images/losangeles/partner_2.svg", alt: "Bamboo Crowd" },
   { src: "/images/losangeles/partner_3.png", alt: "Framer" },
   { src: "/images/losangeles/partner_4.png", alt: "General Assembly" },

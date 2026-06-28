@@ -22,7 +22,6 @@ export const brooklyn: ChapterConfig = {
     ],
     involvedLinks: [
       { label: "Events", href: "https://lu.ma/bkproductdesign" },
-      { label: "Volunteer", href: "https://forms.gle/mobrphDchV83EdQK9" },
     ],
     social: {
       linkedin: "https://linkedin.com/company/bkproductdesign",
