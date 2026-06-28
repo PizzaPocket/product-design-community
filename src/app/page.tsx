@@ -6,7 +6,7 @@ import { LogoGrid } from "@/components/organisms/LogoGrid";
 import { Shelf } from "@/components/organisms/Shelf";
 import { SectionWrapper } from "@/components/organisms/SectionWrapper";
 import { AlternatingMediaRow } from "@/components/molecules/AlternatingMediaRow";
-import { PhotoCard } from "@/components/molecules/PhotoCard";
+import { Tile } from "@/components/molecules/Tile";
 import {
   pdc,
   pdcEventTypes,
@@ -79,10 +79,11 @@ export default function HomePage() {
           >
             Our Chapters
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {pdcChapters.map((chapter) => (
-              <PhotoCard key={chapter.href} {...chapter} />
+              <Tile key={chapter.href} {...chapter} />
             ))}
+            <Tile label="Not seeing your city?" name="Start a chapter" href="" />
           </div>
         </Shelf>
       </main>

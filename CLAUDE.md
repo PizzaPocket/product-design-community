@@ -88,12 +88,24 @@ npm run build    # static export build
 npm run lint     # ESLint
 ```
 
+## Style Guide
+
+The live style guide lives at `/styleguide` (source: `src/app/styleguide/`). It is the canonical reference for design tokens, typography, spacing, component usage rules, and prop documentation.
+
+**Before making any UI change or addition:**
+1. Check the style guide for the relevant component's documented props, usage guidance, and background-color conventions.
+2. Reuse an existing component wherever the layout pattern fits — don't write new JSX if a component already covers it.
+3. If a genuinely new pattern is needed, build it as a proper atom/molecule/organism, add it to the system, then document it in the style guide.
+
+**Keep the style guide in sync with the code.** When a component's props, behavior, or usage rules change, update the corresponding `ComponentHeader` / `Guidance` / `PropTable` block in `src/app/styleguide/page.tsx` in the same commit. The style guide is not a snapshot — it should always reflect the current state of the component.
+
 ## Adding a New Component
 
 1. Decide its atomic level (atom / molecule / organism / template)
 2. Use only Tailwind token classes — no raw hex or px values
 3. Content comes in via props, not hardcoded strings
-4. If it needs Figma reference: use Figma MCP at `http://127.0.0.1:3845/mcp` — see `.mcp.json`
+4. Add a documentation block to `src/app/styleguide/page.tsx` — `ComponentHeader`, `Guidance`, `PropTable`, and a live example
+5. If it needs Figma reference: use Figma MCP at `http://127.0.0.1:3845/mcp` — see `.mcp.json`
 
 ## Figma MCP
 

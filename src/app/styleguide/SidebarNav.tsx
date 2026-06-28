@@ -21,13 +21,19 @@ const NAV: NavItem[] = [
     { label: "Specs",      href: "#buttons-specs" },
   ]},
   { label: "Components",  href: "#components", children: [
+    { label: "Brand Logo",            href: "#comp-brandlogo" },
+    { label: "Divider",               href: "#comp-divider" },
+    { label: "Icon Mark",             href: "#comp-iconmark" },
     { label: "Alternating Media Row", href: "#comp-amr" },
     { label: "Card",                  href: "#comp-card" },
-    { label: "Shelf",                 href: "#comp-shelf" },
+    { label: "Tile",                  href: "#comp-tile" },
+    { label: "Call To Action",        href: "#comp-cta" },
+    { label: "Hero Section",          href: "#comp-hero" },
+    { label: "Image Columns",         href: "#comp-imagecolumns" },
     { label: "Logo Grid",             href: "#comp-logogrid" },
-    { label: "Image Columns",  href: "#comp-imagecolumns" },
-    { label: "Profile Grid",          href: "#comp-profilegrid" },
     { label: "Photo Carousel",        href: "#comp-carousel" },
+    { label: "Profile Grid",          href: "#comp-profilegrid" },
+    { label: "Shelf",                 href: "#comp-shelf" },
   ]},
 ];
 

@@ -6,6 +6,17 @@ import { Shelf } from "@/components/organisms/Shelf";
 import { AlternatingMediaRow } from "@/components/molecules/AlternatingMediaRow";
 import { Card } from "@/components/molecules/Card";
 import { ProfileGrid } from "@/components/organisms/ProfileGrid";
+import { LogoGrid } from "@/components/organisms/LogoGrid";
+import { ImageColumns } from "@/components/organisms/ImageColumns";
+import { PhotoCarousel } from "@/components/organisms/PhotoCarousel";
+import { CallToAction } from "@/components/organisms/CallToAction";
+import { HeroSection } from "@/components/organisms/HeroSection";
+import { Tile } from "@/components/molecules/Tile";
+import { BrandLogo } from "@/components/atoms/BrandLogo";
+import { IconMark } from "@/components/atoms/IconMark";
+import { Divider } from "@/components/atoms/Divider";
+import { bkPartnerLogos, brooklyn } from "@/content/brooklyn";
+import { singapore } from "@/content/singapore";
 import { StyleGuideShell } from "./StyleGuideShell";
 
 export const metadata: Metadata = { title: "Style Guide — PDC" };
@@ -456,6 +467,62 @@ export default function StyleGuidePage() {
           </div>
         </Shelf>
 
+        {/* ── BRAND LOGO ── */}
+        <Shelf id="comp-brandlogo" background="bg-literally-white" className="flex flex-col gap-6">
+          <ComponentHeader level="Atom" file="atoms/BrandLogo.tsx">Brand Logo</ComponentHeader>
+          <Guidance>
+            <p>A fixed-size image container for partner and sponsor logos. Renders greyscale at 60% opacity by default, transitioning to full colour on hover. Consistent height (<Token name="h-10" />) with fixed width (<Token name="w-[140px]" />) ensures uniform visual weight across mixed logo shapes.</p>
+            <p className="mt-2">Wrap in an <Token name="href" /> to make it a link — renders as <Token name="<a>" /> with <Token name="target='_blank'" />. Without <Token name="href" />, renders as a plain div.</p>
+            <p className="mt-2">Used internally by <Token name="LogoGrid" />. Render it directly only if you need a single logo outside of a grid.</p>
+          </Guidance>
+          <PropTable props={[
+            { name: "src",  type: "string",  note: "Image src" },
+            { name: "alt",  type: "string",  note: "Alt text" },
+            { name: "href", type: "string",  note: "Optional — wraps image in an external link" },
+          ]} />
+          <div className="flex flex-wrap gap-8 items-center">
+            <BrandLogo src="/logos/partners/partner_01.png" alt="Adobe" />
+            <BrandLogo src="/logos/partners/partner_04.png" alt="Duolingo" />
+            <BrandLogo src="/logos/partners/nyu.svg" alt="NYU" />
+            <BrandLogo src="/logos/partners/wework.svg" alt="WeWork" />
+          </div>
+        </Shelf>
+
+        {/* ── DIVIDER ── */}
+        <Shelf id="comp-divider" background="bg-cookie-dough" className="flex flex-col gap-6">
+          <ComponentHeader level="Atom" file="atoms/Divider.tsx">Divider</ComponentHeader>
+          <Guidance>
+            <p>A 1px horizontal rule in <Token name="just-grey" />. Use to separate adjacent content blocks within a section — between a list and a CTA, between a grid and supplementary copy. Not for separating sections (Shelfs handle that with spacing).</p>
+            <p className="mt-2">Pass <Token name="className" /> to override width or add margin — e.g. <Token name='className="w-1/2"' /> for a short decorative rule.</p>
+          </Guidance>
+          <PropTable props={[
+            { name: "className", type: "string", note: "Optional — additional Tailwind classes (margin, width, color)" },
+          ]} />
+          <div className="flex flex-col gap-6 py-2">
+            <Divider />
+          </div>
+        </Shelf>
+
+        {/* ── ICON MARK ── */}
+        <Shelf id="comp-iconmark" background="bg-literally-white" className="flex flex-col gap-6">
+          <ComponentHeader level="Atom" file="atoms/IconMark.tsx">Icon Mark</ComponentHeader>
+          <Guidance>
+            <p>The PDC geometric mark — a teal circle, yellow square, and red triangle composited together. Used in the <Token name="NavBar" />, <Token name="MobileMenu" />, and as the site favicon. Not for general decoration — it represents the PDC brand identity specifically.</p>
+            <p className="mt-2">Pass <Token name="size" /> to scale uniformly. Default is 32px.</p>
+          </Guidance>
+          <PropTable props={[
+            { name: "size",      type: "number", note: "Width and height in px. Default: 32" },
+            { name: "className", type: "string", note: "Optional Tailwind classes" },
+          ]} />
+          <div className="flex items-end gap-8">
+            <IconMark size={16} />
+            <IconMark size={24} />
+            <IconMark size={32} />
+            <IconMark size={48} />
+            <IconMark size={64} />
+          </div>
+        </Shelf>
+
         {/* ── ALTERNATING MEDIA ROW ── */}
         <Shelf id="comp-amr" background="bg-cookie-dough" className="flex flex-col gap-6">
           <ComponentHeader level="Molecule" file="molecules/AlternatingMediaRow.tsx">Alternating Media Row</ComponentHeader>
@@ -534,6 +601,28 @@ export default function StyleGuidePage() {
           </Preview>
         </Shelf>
 
+        {/* ── TILE ── */}
+        <Shelf id="comp-tile" background="bg-cookie-dough" className="flex flex-col gap-6">
+          <ComponentHeader level="Molecule" file="molecules/Tile.tsx">Tile</ComponentHeader>
+          <Guidance>
+            <p>A linked 2:1 tile. Two variants: <strong>photo</strong> (with <Token name="image" />) renders a full-bleed photo with a name overlay at the bottom and a subtle zoom on hover. <strong>CTA</strong> (no <Token name="image" />) renders a dark <Token name="nearly-black" /> background that transitions to <Token name="deep-blueklyn" /> on hover, with an optional <Token name="label" /> above the name.</p>
+            <p className="mt-2">Use in grids of equal-size items where the photo or brand colour does most of the communication. Not suitable for content needing body copy or a CTA button — use <Token name="Card" /> for that.</p>
+            <p className="mt-2">Image uses <Token name="rounded-image" /> (40px). Pass an empty <Token name='href=""' /> as a placeholder when the link isn't ready yet.</p>
+          </Guidance>
+          <PropTable props={[
+            { name: "name",  type: "string", note: "Displayed as H3 — the tile's primary label" },
+            { name: "href",  type: "string", note: "Link destination. Pass empty string as placeholder." },
+            { name: "image", type: "string", note: "Optional — image src at 2:1 aspect. Absent = CTA dark variant." },
+            { name: "label", type: "string", note: "Optional — small text above name. Only visible in CTA variant." },
+          ]} />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Tile name="Brooklyn" href="#" image="/images/brooklyn/hero.webp" />
+            <Tile name="Los Angeles" href="#" image="/images/losangeles/hero.png" />
+            <Tile name="Singapore" href="#" image="/images/singapore/hero.jpg" />
+            <Tile label="Not seeing your city?" name="Start a chapter" href="" />
+          </div>
+        </Shelf>
+
         {/* ── SHELF ── */}
         <Shelf id="comp-shelf" background="bg-cookie-dough" className="flex flex-col gap-6">
           <ComponentHeader level="Organism" file="organisms/Shelf.tsx">Shelf</ComponentHeader>
@@ -553,6 +642,79 @@ export default function StyleGuidePage() {
           ]} />
         </Shelf>
 
+        {/* ── CALL TO ACTION ── */}
+        <Shelf id="comp-cta" className="flex flex-col gap-6">
+          <ComponentHeader level="Organism" file="organisms/CallToAction.tsx">Call To Action</ComponentHeader>
+          <Guidance>
+            <p>A centered full-width section with a heading, optional body copy, and a single CTA button. Two modes: <Token name='background="dark"' /> (default) renders on <Token name="nearly-black" /> with <Token name="cookie-dough" /> heading and <Token name="just-grey" /> body. <Token name='background="light"' /> renders on the current page background with <Token name="nearly-black" /> text.</p>
+            <p className="mt-2">Use at the end of a page or section to prompt a single clear action. One CTA per section — not for multi-action blocks.</p>
+          </Guidance>
+          <PropTable props={[
+            { name: "heading",    type: "string",                               note: "Required H2" },
+            { name: "body",       type: "string",                               note: "Optional B2 body copy below heading" },
+            { name: "ctaLabel",   type: "string",                               note: "Required button label" },
+            { name: "ctaHref",    type: "string",                               note: "Required button href" },
+            { name: "ctaVariant", type: '"primary" | "secondary" | "primary-alt"', note: 'Default: "primary"' },
+            { name: "background", type: '"dark" | "light"',                     note: 'Default: "dark"' },
+          ]} />
+        </Shelf>
+        <CallToAction
+          heading="Ready to get involved?"
+          body="Whether you're here to learn, teach, or just meet great people — there's a place for you."
+          ctaLabel="Find your chapter"
+          ctaHref="#"
+          ctaVariant="primary"
+          background="dark"
+        />
+        <Shelf size="sm">
+          <Preview label='background="light"'>
+            <CallToAction
+              heading="Ready to get involved?"
+              body="Whether you're here to learn, teach, or just meet great people — there's a place for you."
+              ctaLabel="Find your chapter"
+              ctaHref="#"
+              ctaVariant="secondary"
+              background="light"
+            />
+          </Preview>
+        </Shelf>
+
+        {/* ── HERO SECTION ── */}
+        <Shelf id="comp-hero" background="bg-cookie-dough" className="flex flex-col gap-6">
+          <ComponentHeader level="Organism" file="organisms/HeroSection.tsx">Hero Section</ComponentHeader>
+          <Guidance>
+            <p>Full-width photo background with an optional heading (H1) and CTA button. Used at the top of every chapter home page. The photo always fills the container with <Token name="object-cover object-center" />.</p>
+            <p className="mt-2"><strong>Scrim</strong> — a gradient overlay to ensure text legibility. Choose based on where the text lives in the frame:</p>
+            <p className="mt-2 pl-3"><Token name='scrim="lr"' /> — gradient from left, for left-aligned text. Default.<br />
+            <Token name='scrim="tb"' /> — dark at top, clear below — use when text is centered and the sky/top of the photo is bright.<br />
+            <Token name='scrim="bt"' /> — dark at bottom, clear above — pair with <Token name='textAlign="left"' /> and content anchored to the bottom (<Token name="items-end" /> behaviour).<br />
+            <Token name='scrim="full"' /> — flat 30% overlay, use only when the photo is very busy across the whole frame.<br />
+            <Token name="scrim={false}" /> — no overlay, only use when photo contrast is sufficient.</p>
+            <p className="mt-2"><strong><Token name="compact" /></strong> — reduces min height (mobile: 320px, desktop: 360px vs. default 360px/520px). Use when the hero shares the page with dense content below and full-height feels heavy.</p>
+            <p className="mt-2">Heading and CTA are both optional — pass neither for a purely photographic hero.</p>
+          </Guidance>
+          <PropTable props={[
+            { name: "image",     type: "string",                                                    note: "Required — background photo src" },
+            { name: "heading",   type: "string",                                                    note: "Optional H1 rendered over the photo" },
+            { name: "textAlign", type: '"left" | "center"',                                         note: 'Default: "left"' },
+            { name: "scrim",     type: '"lr" | "tb" | "bt" | "full" | false',                       note: 'Default: "lr"' },
+            { name: "compact",   type: "boolean",                                                   note: "Reduced min-height. Default: false" },
+            { name: "ctaLabel",  type: "string",                                                    note: "Optional — CTA button label" },
+            { name: "ctaHref",   type: "string",                                                    note: "Optional — CTA button href (both required to render)" },
+            { name: "ctaVariant",type: '"primary" | "secondary" | "tertiary" | "primary-alt"',      note: 'Default: "primary"' },
+          ]} />
+        </Shelf>
+        <HeroSection
+          heading="What's on over the Bridge"
+          image="/images/brooklyn/hero.webp"
+          textAlign="center"
+          scrim="tb"
+          compact
+          ctaLabel="Go to events"
+          ctaHref="#"
+          ctaVariant="primary-alt"
+        />
+
         {/* ── LOGO GRID ── */}
         <Shelf id="comp-logogrid" className="flex flex-col gap-6">
           <ComponentHeader level="Organism" file="organisms/LogoGrid.tsx">Logo Grid</ComponentHeader>
@@ -568,6 +730,11 @@ export default function StyleGuidePage() {
             { name: "footer",         type: "React.ReactNode", note: "Optional slot below logos, separated by a divider" },
           ]} />
         </Shelf>
+        <LogoGrid
+          logos={bkPartnerLogos}
+          sectionHeading="Thanks to our partners & supporters"
+          background="bg-literally-white"
+        />
 
         {/* ── IMAGE COLUMNS ── */}
         <Shelf id="comp-imagecolumns" background="bg-cookie-dough" className="flex flex-col gap-6">
@@ -584,6 +751,11 @@ export default function StyleGuidePage() {
             { name: "footer",         type: "React.ReactNode", note: "Optional slot below the columns" },
           ]} />
         </Shelf>
+        <ImageColumns
+          pillars={brooklyn.values}
+          sectionHeading="What our community stands for"
+          background="bg-cookie-dough"
+        />
 
         {/* ── PROFILE GRID ── */}
         <Shelf id="comp-profilegrid" className="flex flex-col gap-6">
@@ -612,6 +784,7 @@ export default function StyleGuidePage() {
             { name: "images", type: "string[]", note: "Array of image src paths. Loop enabled. Autoplays at 3s." },
           ]} />
         </Shelf>
+        <PhotoCarousel images={singapore.carouselImages ?? []} />
 
     </StyleGuideShell>
   );

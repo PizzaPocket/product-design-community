@@ -176,7 +176,7 @@ export const singaporePartnershipTiers: PartnershipTierItem[] = [
       "Discount codes for attendees",
     ],
     ctaLabel: "Sponsorship info",
-    ctaHref: "https://docs.google.com/presentation/d/singapore-deck",
+    ctaHref: "https://docs.google.com/document/d/1FsaCNiH0B3cEyB-cQVJ3QrCQv-x9W5ec__cDvR5lvjI/edit?usp=sharing",
     image: "/images/singapore/partnership_event.jpg",
   },
   {
@@ -198,7 +198,7 @@ export const singaporePartnershipTiers: PartnershipTierItem[] = [
       "Pecha Kucha / World Café",
     ],
     ctaLabel: "Speaker Sign-up",
-    ctaHref: "https://forms.gle/speak-spd",
+    ctaHref: "https://forms.gle/hBxEK4uJ8AqzouQh7",
     image: "/images/singapore/partnership_speak.jpg",
   },
 ];
