@@ -752,7 +752,7 @@ export default function StyleGuidePage() {
           ]} />
         </Shelf>
         <ImageColumns
-          pillars={brooklyn.values}
+          pillars={brooklyn.values ?? []}
           sectionHeading="What our community stands for"
           background="bg-cookie-dough"
         />
