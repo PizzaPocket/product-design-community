@@ -1,14 +1,20 @@
 interface TileProps {
   name: string;
-  href: string;
+  href?: string;
   image?: string;
   label?: string;
+  onClick?: () => void;
 }
 
-export function Tile({ name, href, image, label }: TileProps) {
+export function Tile({ name, href, image, label, onClick }: TileProps) {
+  const Wrapper = onClick ? "button" : "a";
+  const wrapperProps = onClick
+    ? { type: "button" as const, onClick }
+    : { href: href || "#" };
+
   if (!image) {
     return (
-      <a href={href || "#"} className="group no-underline block">
+      <Wrapper {...wrapperProps} className="group no-underline block w-full text-left">
         <div className="relative aspect-[2/1] rounded-image overflow-hidden bg-nearly-black flex flex-col items-center justify-center gap-2 p-6 transition-colors duration-300 group-hover:bg-deep-blueklyn">
           {label && (
             <p
@@ -25,12 +31,12 @@ export function Tile({ name, href, image, label }: TileProps) {
             {name}
           </h3>
         </div>
-      </a>
+      </Wrapper>
     );
   }
 
   return (
-    <a href={href} className="group no-underline block">
+    <Wrapper {...wrapperProps} className="group no-underline block w-full text-left">
       <div className="relative aspect-[2/1] rounded-image overflow-hidden bg-just-grey/20">
         <img
           src={image}
@@ -46,6 +52,6 @@ export function Tile({ name, href, image, label }: TileProps) {
           </h3>
         </div>
       </div>
-    </a>
+    </Wrapper>
   );
 }

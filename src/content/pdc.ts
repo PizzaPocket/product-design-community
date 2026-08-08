@@ -11,6 +11,7 @@ export const pdc: ChapterConfig = {
   name: "Product Design Community",
   accentColor: "var(--color-deep-blueklyn)",
   logo: "/images/global/logo_strip.png",
+  contactEmail: "productdesigncommunity@gmail.com",
 
   nav: {
     links: [

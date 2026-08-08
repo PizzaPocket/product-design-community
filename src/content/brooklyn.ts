@@ -7,6 +7,7 @@ export const brooklyn: ChapterConfig = {
   accentColor: "var(--color-deep-blueklyn)",
   logo: "/logos/bpd_logo_nav.svg",
   footerLogo: "/logos/bpd_logo_footer.svg",
+  contactEmail: "brooklyn@productdesign.community",
 
   nav: {
     links: [

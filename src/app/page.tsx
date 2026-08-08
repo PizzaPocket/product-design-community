@@ -7,6 +7,7 @@ import { Shelf } from "@/components/organisms/Shelf";
 import { SectionWrapper } from "@/components/organisms/SectionWrapper";
 import { AlternatingMediaRow } from "@/components/molecules/AlternatingMediaRow";
 import { Tile } from "@/components/molecules/Tile";
+import { ContactTile } from "@/components/molecules/ContactTile";
 import {
   pdc,
   pdcEventTypes,
@@ -83,7 +84,14 @@ export default function HomePage() {
             {pdcChapters.map((chapter) => (
               <Tile key={chapter.href} {...chapter} />
             ))}
-            <Tile label="Not seeing your city?" name="Start a chapter" href="" />
+            <ContactTile
+              chapter="pdc"
+              chapterName={pdc.name}
+              name="Start a chapter"
+              label="Not seeing your city?"
+              title="Start a new chapter"
+              intro="Not seeing your city? Tell us where you're based and a bit about you, and we'll be in touch about starting a chapter there."
+            />
           </div>
         </Shelf>
       </main>

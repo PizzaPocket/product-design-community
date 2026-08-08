@@ -74,6 +74,7 @@ export interface ChapterConfig {
   accentColor: string;
   logo?: string;
   footerLogo?: string;
+  contactEmail?: string;
   nav: NavConfig;
   footer: FooterConfig;
   hero: {

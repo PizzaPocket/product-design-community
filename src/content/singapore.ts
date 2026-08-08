@@ -7,6 +7,7 @@ export const singapore: ChapterConfig = {
   accentColor: "var(--color-singapore-sling)",
   logo: "/logos/spd_logo_nav.svg",
   footerLogo: "/logos/spd_logo_footer.svg",
+  contactEmail: "singaporeproductdesign@gmail.com",
 
   nav: {
     links: [

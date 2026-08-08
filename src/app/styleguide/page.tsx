@@ -15,9 +15,14 @@ import { Tile } from "@/components/molecules/Tile";
 import { BrandLogo } from "@/components/atoms/BrandLogo";
 import { IconMark } from "@/components/atoms/IconMark";
 import { Divider } from "@/components/atoms/Divider";
+import { ContactForm } from "@/components/molecules/ContactForm";
+import { ContactTile } from "@/components/molecules/ContactTile";
 import { bkPartnerLogos, brooklyn } from "@/content/brooklyn";
 import { singapore } from "@/content/singapore";
+import { pdc } from "@/content/pdc";
 import { StyleGuideShell } from "./StyleGuideShell";
+import { InputDemo } from "./InputDemo";
+import { ModalDemo } from "./ModalDemo";
 
 export const metadata: Metadata = { title: "Style Guide — PDC" };
 
@@ -523,6 +528,27 @@ export default function StyleGuidePage() {
           </div>
         </Shelf>
 
+        {/* ── INPUT ── */}
+        <Shelf id="comp-input" background="bg-literally-white" className="flex flex-col gap-6">
+          <ComponentHeader level="Atom" file="atoms/Input.tsx">Input</ComponentHeader>
+          <Guidance>
+            <p>A single-line text input or, with <Token name="multiline" />, a textarea — same border, radius, and focus styling either way. Always controlled: pass <Token name="value" /> and <Token name="onChange" />.</p>
+            <p className="mt-2">Pair with a native <Token name="&lt;label&gt;" /> in the parent rather than building a labelled-field atom — see <Token name="ContactForm" /> for the pattern.</p>
+          </Guidance>
+          <PropTable props={[
+            { name: "id",          type: "string",  note: "Required — for label association" },
+            { name: "name",        type: "string",  note: "Required — form field name" },
+            { name: "type",        type: "string",  note: 'HTML input type. Default: "text"' },
+            { name: "multiline",   type: "boolean", note: "Renders a textarea instead of an input" },
+            { name: "rows",        type: "number",  note: "Textarea rows. Default: 5" },
+            { name: "required",    type: "boolean", note: "" },
+            { name: "placeholder", type: "string",  note: "" },
+            { name: "value",       type: "string",  note: "Required — controlled value" },
+            { name: "onChange",    type: "(value: string) => void", note: "Required" },
+          ]} />
+          <InputDemo />
+        </Shelf>
+
         {/* ── ALTERNATING MEDIA ROW ── */}
         <Shelf id="comp-amr" background="bg-cookie-dough" className="flex flex-col gap-6">
           <ComponentHeader level="Molecule" file="molecules/AlternatingMediaRow.tsx">Alternating Media Row</ComponentHeader>
@@ -605,22 +631,80 @@ export default function StyleGuidePage() {
         <Shelf id="comp-tile" background="bg-cookie-dough" className="flex flex-col gap-6">
           <ComponentHeader level="Molecule" file="molecules/Tile.tsx">Tile</ComponentHeader>
           <Guidance>
-            <p>A linked 2:1 tile. Two variants: <strong>photo</strong> (with <Token name="image" />) renders a full-bleed photo with a name overlay at the bottom and a subtle zoom on hover. <strong>CTA</strong> (no <Token name="image" />) renders a dark <Token name="nearly-black" /> background that transitions to <Token name="deep-blueklyn" /> on hover, with an optional <Token name="label" /> above the name.</p>
+            <p>A 2:1 tile, either linked or clickable. Two visual variants: <strong>photo</strong> (with <Token name="image" />) renders a full-bleed photo with a name overlay at the bottom and a subtle zoom on hover. <strong>CTA</strong> (no <Token name="image" />) renders a dark <Token name="nearly-black" /> background that transitions to <Token name="deep-blueklyn" /> on hover, with an optional <Token name="label" /> above the name.</p>
             <p className="mt-2">Use in grids of equal-size items where the photo or brand colour does most of the communication. Not suitable for content needing body copy or a CTA button — use <Token name="Card" /> for that.</p>
             <p className="mt-2">Image uses <Token name="rounded-image" /> (40px). Pass an empty <Token name='href=""' /> as a placeholder when the link isn't ready yet.</p>
+            <p className="mt-2">Pass <Token name="onClick" /> instead of <Token name="href" /> to render a <Token name="&lt;button&gt;" /> rather than a link — this is what <Token name="ContactTile" /> uses internally to open a contact modal instead of navigating.</p>
           </Guidance>
           <PropTable props={[
-            { name: "name",  type: "string", note: "Displayed as H3 — the tile's primary label" },
-            { name: "href",  type: "string", note: "Link destination. Pass empty string as placeholder." },
-            { name: "image", type: "string", note: "Optional — image src at 2:1 aspect. Absent = CTA dark variant." },
-            { name: "label", type: "string", note: "Optional — small text above name. Only visible in CTA variant." },
+            { name: "name",    type: "string",     note: "Displayed as H3 — the tile's primary label" },
+            { name: "href",    type: "string",     note: "Link destination. Omit when using onClick." },
+            { name: "onClick", type: "() => void", note: "Renders a button instead of a link. Takes priority over href." },
+            { name: "image",   type: "string",     note: "Optional — image src at 2:1 aspect. Absent = CTA dark variant." },
+            { name: "label",   type: "string",     note: "Optional — small text above name. Only visible in CTA variant." },
           ]} />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Tile name="Brooklyn" href="#" image="/images/brooklyn/hero.webp" />
             <Tile name="Los Angeles" href="#" image="/images/losangeles/hero.png" />
             <Tile name="Singapore" href="#" image="/images/singapore/hero.jpg" />
-            <Tile label="Not seeing your city?" name="Start a chapter" href="" />
+            <ContactTile
+              chapter="pdc"
+              chapterName={pdc.name}
+              name="Start a chapter"
+              label="Not seeing your city?"
+              title="Start a new chapter"
+              intro="Not seeing your city? Tell us where you're based and a bit about you, and we'll be in touch about starting a chapter there."
+            />
           </div>
+        </Shelf>
+
+        {/* ── MODAL ── */}
+        <Shelf id="comp-modal" background="bg-cookie-dough" className="flex flex-col gap-6">
+          <ComponentHeader level="Molecule" file="molecules/Modal.tsx">Modal</ComponentHeader>
+          <Guidance>
+            <p>A centered dialog with a scrim backdrop. Closes on backdrop click, the X button, or Escape, and locks page scroll while open. Purely a layout shell — <Token name="isOpen" />/<Token name="onClose" /> are owned by the parent.</p>
+            <p className="mt-2">For a self-contained trigger + modal pairing (the common case), use <Token name="ContactTile" /> instead of wiring <Token name="Modal" /> up by hand.</p>
+          </Guidance>
+          <PropTable props={[
+            { name: "isOpen",  type: "boolean",         note: "Required" },
+            { name: "onClose", type: "() => void",      note: "Required" },
+            { name: "title",   type: "string",          note: "Optional — rendered as H3 at the top of the panel" },
+            { name: "children", type: "React.ReactNode", note: "Required — modal body content" },
+          ]} />
+          <ModalDemo />
+        </Shelf>
+
+        {/* ── CONTACT FORM ── */}
+        <Shelf id="comp-contactform" background="bg-literally-white" className="flex flex-col gap-6">
+          <ComponentHeader level="Molecule" file="molecules/ContactForm.tsx">Contact Form</ComponentHeader>
+          <Guidance>
+            <p>Name, email, and message fields plus a submit button. Posts to <Token name="/api/contact" />, which looks up the destination inbox server-side from the <Token name="chapter" /> slug&apos;s <Token name="contactEmail" /> in <Token name="src/content/*.ts" /> — the client never specifies where mail is delivered.</p>
+            <p className="mt-2">Includes a visually hidden honeypot field to filter bot submissions. Shows an inline success message in place of the form once sent; on failure, shows a retry message and leaves the form filled in.</p>
+            <p className="mt-2">Usually rendered inside a trigger + modal wrapper like <Token name="ContactTile" /> rather than used directly.</p>
+          </Guidance>
+          <PropTable props={[
+            { name: "chapter", type: '"pdc" | "brooklyn" | "losangeles" | "singapore"', note: "Required — determines the delivery inbox" },
+          ]} />
+          <div className="max-w-md">
+            <ContactForm chapter="pdc" />
+          </div>
+        </Shelf>
+
+        {/* ── CONTACT TILE ── */}
+        <Shelf id="comp-contacttile" background="bg-cookie-dough" className="flex flex-col gap-6">
+          <ComponentHeader level="Molecule" file="molecules/ContactTile.tsx">Contact Tile</ComponentHeader>
+          <Guidance>
+            <p>A <Token name="Tile" /> that opens a <Token name="Modal" /> containing <Token name="ContactForm" /> instead of navigating, with the open/close state self-contained. This is the pattern used for the &ldquo;Start a chapter&rdquo; tile on the PDC homepage (see the Tile example above).</p>
+            <p className="mt-2">Because it&apos;s a Client Component wrapping its own state, it can be dropped directly into a Server Component page without any extra wiring — see <Token name="src/app/page.tsx" />.</p>
+          </Guidance>
+          <PropTable props={[
+            { name: "chapter",     type: '"pdc" | "brooklyn" | "losangeles" | "singapore"', note: "Required" },
+            { name: "chapterName", type: "string",  note: "Required — used in the default modal title" },
+            { name: "name",        type: "string",  note: "Required — the tile's H3 label" },
+            { name: "label",       type: "string",  note: "Optional — small text above the tile's name" },
+            { name: "title",       type: "string",  note: 'Optional — overrides the default "Contact {chapterName}" modal title' },
+            { name: "intro",       type: "string",  note: "Optional — body copy shown above the form" },
+          ]} />
         </Shelf>
 
         {/* ── SHELF ── */}

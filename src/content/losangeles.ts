@@ -7,6 +7,7 @@ export const losangeles: ChapterConfig = {
   accentColor: "var(--color-la-poolside)",
   logo: "/logos/lapd_logo_nav.svg",
   footerLogo: "/logos/lapd_logo_footer.svg",
+  contactEmail: "laproductdesign@gmail.com",
 
   nav: {
     links: [
