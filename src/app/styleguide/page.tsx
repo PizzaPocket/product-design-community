@@ -534,6 +534,7 @@ export default function StyleGuidePage() {
           <Guidance>
             <p>A single-line text input or, with <Token name="multiline" />, a textarea — same border, radius, and focus styling either way. Always controlled: pass <Token name="value" /> and <Token name="onChange" />.</p>
             <p className="mt-2">Pair with a native <Token name="&lt;label&gt;" /> in the parent rather than building a labelled-field atom — see <Token name="ContactForm" /> for the pattern.</p>
+            <p className="mt-2">Pass <Token name="error" /> to switch the border to <Token name="singapore-sling" /> — the parent owns validation and decides when to set it.</p>
           </Guidance>
           <PropTable props={[
             { name: "id",          type: "string",  note: "Required — for label association" },
@@ -542,6 +543,7 @@ export default function StyleGuidePage() {
             { name: "multiline",   type: "boolean", note: "Renders a textarea instead of an input" },
             { name: "rows",        type: "number",  note: "Textarea rows. Default: 5" },
             { name: "required",    type: "boolean", note: "" },
+            { name: "error",       type: "boolean", note: "Switches border colour to indicate a validation error" },
             { name: "placeholder", type: "string",  note: "" },
             { name: "value",       type: "string",  note: "Required — controlled value" },
             { name: "onChange",    type: "(value: string) => void", note: "Required" },
@@ -678,12 +680,14 @@ export default function StyleGuidePage() {
         <Shelf id="comp-contactform" background="bg-literally-white" className="flex flex-col gap-6">
           <ComponentHeader level="Molecule" file="molecules/ContactForm.tsx">Contact Form</ComponentHeader>
           <Guidance>
-            <p>Name, email, and message fields plus a submit button. Posts to <Token name="/api/contact" />, which looks up the destination inbox server-side from the <Token name="chapter" /> slug&apos;s <Token name="contactEmail" /> in <Token name="src/content/*.ts" /> — the client never specifies where mail is delivered.</p>
-            <p className="mt-2">Includes a visually hidden honeypot field to filter bot submissions. Shows an inline success message in place of the form once sent; on failure, shows a retry message and leaves the form filled in.</p>
+            <p>Name, email, and message fields plus a submit button. All three are required — marked with a red <Token name="*" /> — and validated on submit before anything is sent: empty fields and malformed emails get a red border and inline error text, and the request never fires until they&apos;re fixed.</p>
+            <p className="mt-2">Posts to <Token name="/api/contact" />, which looks up the destination inbox server-side from the <Token name="chapter" /> slug&apos;s <Token name="contactEmail" /> in <Token name="src/content/*.ts" /> — the client never specifies where mail is delivered. Includes a visually hidden honeypot field to filter bot submissions.</p>
+            <p className="mt-2">Shows an inline success message in place of the form once sent; on failure, shows a retry message and leaves the form filled in. Call <Token name="onSuccess" /> to react to a successful send — <Token name="ContactTile" /> uses it to swap the modal&apos;s title.</p>
             <p className="mt-2">Usually rendered inside a trigger + modal wrapper like <Token name="ContactTile" /> rather than used directly.</p>
           </Guidance>
           <PropTable props={[
-            { name: "chapter", type: '"pdc" | "brooklyn" | "losangeles" | "singapore"', note: "Required — determines the delivery inbox" },
+            { name: "chapter",   type: '"pdc" | "brooklyn" | "losangeles" | "singapore"', note: "Required — determines the delivery inbox" },
+            { name: "onSuccess", type: "() => void", note: "Optional — called once the message sends successfully" },
           ]} />
           <div className="max-w-md">
             <ContactForm chapter="pdc" />
@@ -695,6 +699,7 @@ export default function StyleGuidePage() {
           <ComponentHeader level="Molecule" file="molecules/ContactTile.tsx">Contact Tile</ComponentHeader>
           <Guidance>
             <p>A <Token name="Tile" /> that opens a <Token name="Modal" /> containing <Token name="ContactForm" /> instead of navigating, with the open/close state self-contained. This is the pattern used for the &ldquo;Start a chapter&rdquo; tile on the PDC homepage (see the Tile example above).</p>
+            <p className="mt-2">On a successful send, the modal title swaps to &ldquo;You did the thing, nice.&rdquo; and the intro copy is hidden, leaving just the confirmation message. Closing and reopening resets it back to the normal title.</p>
             <p className="mt-2">Because it&apos;s a Client Component wrapping its own state, it can be dropped directly into a Server Component page without any extra wiring — see <Token name="src/app/page.tsx" />.</p>
           </Guidance>
           <PropTable props={[

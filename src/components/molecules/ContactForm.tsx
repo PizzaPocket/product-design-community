@@ -7,27 +7,60 @@ import type { ChapterConfig } from "@/types/content";
 
 interface ContactFormProps {
   chapter: ChapterConfig["slug"];
+  onSuccess?: () => void;
 }
 
 type Status = "idle" | "submitting" | "success" | "error";
 
-export function ContactForm({ chapter }: ContactFormProps) {
+interface FieldErrors {
+  name?: string;
+  email?: string;
+  message?: string;
+}
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function RequiredMark() {
+  return (
+    <span className="text-singapore-sling" aria-hidden="true">
+      {" "}
+      *
+    </span>
+  );
+}
+
+export function ContactForm({ chapter, onSuccess }: ContactFormProps) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [company, setCompany] = useState(""); // honeypot
   const [status, setStatus] = useState<Status>("idle");
+  const [errors, setErrors] = useState<FieldErrors>({});
 
   if (status === "success") {
     return (
       <p className="text-really-dark-grey" style={{ fontSize: "var(--text-b2)", lineHeight: "var(--lh-b2)" }}>
-        Thanks for reaching out. We&apos;ll get back to you soon.
+        Thanks for reaching out. Please give our volunteers time to get back to you soon.
       </p>
     );
   }
 
+  const validate = (): FieldErrors => {
+    const nextErrors: FieldErrors = {};
+    if (!name.trim()) nextErrors.name = "Name is required";
+    if (!email.trim()) nextErrors.email = "Email is required";
+    else if (!EMAIL_RE.test(email)) nextErrors.email = "Enter a valid email address";
+    if (!message.trim()) nextErrors.message = "Message is required";
+    return nextErrors;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    const nextErrors = validate();
+    setErrors(nextErrors);
+    if (Object.keys(nextErrors).length > 0) return;
+
     setStatus("submitting");
 
     try {
@@ -39,32 +72,36 @@ export function ContactForm({ chapter }: ContactFormProps) {
 
       if (!res.ok) throw new Error("Request failed");
       setStatus("success");
+      onSuccess?.();
     } catch {
       setStatus("error");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+    <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4">
       <div className="flex flex-col gap-1.5">
         <label htmlFor="contact-name" className="text-sm font-bold text-nearly-black">
-          Name
+          Name<RequiredMark />
         </label>
-        <Input id="contact-name" name="name" required value={name} onChange={setName} />
+        <Input id="contact-name" name="name" required error={!!errors.name} value={name} onChange={setName} />
+        {errors.name && <p className="text-singapore-sling text-sm">{errors.name}</p>}
       </div>
 
       <div className="flex flex-col gap-1.5">
         <label htmlFor="contact-email" className="text-sm font-bold text-nearly-black">
-          Email
+          Email<RequiredMark />
         </label>
-        <Input id="contact-email" name="email" type="email" required value={email} onChange={setEmail} />
+        <Input id="contact-email" name="email" type="email" required error={!!errors.email} value={email} onChange={setEmail} />
+        {errors.email && <p className="text-singapore-sling text-sm">{errors.email}</p>}
       </div>
 
       <div className="flex flex-col gap-1.5">
         <label htmlFor="contact-message" className="text-sm font-bold text-nearly-black">
-          Message
+          Message<RequiredMark />
         </label>
-        <Input id="contact-message" name="message" multiline required value={message} onChange={setMessage} />
+        <Input id="contact-message" name="message" multiline required error={!!errors.message} value={message} onChange={setMessage} />
+        {errors.message && <p className="text-singapore-sling text-sm">{errors.message}</p>}
       </div>
 
       {/* Honeypot — hidden from sighted users, left open for bots */}

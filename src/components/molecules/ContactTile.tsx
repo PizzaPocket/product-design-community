@@ -15,14 +15,22 @@ interface ContactTileProps {
   intro?: string;
 }
 
+const SUCCESS_TITLE = "You did the thing, nice.";
+
 export function ContactTile({ chapter, chapterName, name, label, title, intro }: ContactTileProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleClose = () => {
+    setIsOpen(false);
+    setSubmitted(false);
+  };
 
   return (
     <>
       <Tile name={name} label={label} onClick={() => setIsOpen(true)} />
-      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} title={title ?? `Contact ${chapterName}`}>
-        {intro && (
+      <Modal isOpen={isOpen} onClose={handleClose} title={submitted ? SUCCESS_TITLE : title ?? `Contact ${chapterName}`}>
+        {intro && !submitted && (
           <p
             className="text-really-dark-grey mb-6"
             style={{ fontSize: "var(--text-b2)", lineHeight: "var(--lh-b2)" }}
@@ -30,7 +38,7 @@ export function ContactTile({ chapter, chapterName, name, label, title, intro }:
             {intro}
           </p>
         )}
-        <ContactForm chapter={chapter} />
+        <ContactForm chapter={chapter} onSuccess={() => setSubmitted(true)} />
       </Modal>
     </>
   );
