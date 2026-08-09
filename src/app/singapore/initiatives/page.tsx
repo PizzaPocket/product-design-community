@@ -3,7 +3,8 @@ import { Footer } from "@/components/organisms/Footer";
 import { Shelf } from "@/components/organisms/Shelf";
 import { AlternatingMediaRow } from "@/components/molecules/AlternatingMediaRow";
 import { SectionWrapper } from "@/components/organisms/SectionWrapper";
-import { singapore, singaporeZines } from "@/content/singapore";
+import { VolunteerLink } from "@/components/molecules/VolunteerLink";
+import { singapore, singaporeZines, singaporeVolunteerCategories } from "@/content/singapore";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -64,7 +65,10 @@ export default function SingaporeInitiativesPage() {
         </Shelf>
       </main>
 
-      <Footer chapter={singapore} />
+      <Footer
+        chapter={singapore}
+        volunteerTrigger={<VolunteerLink chapter="singapore" chapterName={singapore.name} categories={singaporeVolunteerCategories} />}
+      />
     </>
   );
 }

@@ -19,6 +19,9 @@ import { ContactForm } from "@/components/molecules/ContactForm";
 import { ContactTile } from "@/components/molecules/ContactTile";
 import { VolunteerForm } from "@/components/molecules/VolunteerForm";
 import { VolunteerButton } from "@/components/molecules/VolunteerButton";
+import { VolunteerLink } from "@/components/molecules/VolunteerLink";
+import { ContactButton } from "@/components/molecules/ContactButton";
+import { ContactLink } from "@/components/molecules/ContactLink";
 import { bkPartnerLogos, brooklyn } from "@/content/brooklyn";
 import { singapore, singaporeVolunteerCategories } from "@/content/singapore";
 import { pdc } from "@/content/pdc";
@@ -787,6 +790,33 @@ export default function StyleGuidePage() {
             { name: "variant",     type: '"primary" | "secondary" | "tertiary" | "primary-alt"', note: 'Optional. Default: "primary"' },
           ]} />
           <VolunteerButton chapter="singapore" chapterName={singapore.name} categories={singaporeVolunteerCategories} />
+        </Shelf>
+
+        {/* ── VOLUNTEER LINK / CONTACT BUTTON / CONTACT LINK ── */}
+        <Shelf id="comp-triggervariants" background="bg-literally-white" className="flex flex-col gap-6">
+          <ComponentHeader level="Molecule" file="molecules/VolunteerLink.tsx, ContactButton.tsx, ContactLink.tsx">
+            Trigger variants
+          </ComponentHeader>
+          <Guidance>
+            <p>Three more trigger + modal pairings following the same self-contained pattern as <Token name="ContactTile" /> and <Token name="VolunteerButton" />, covering the remaining trigger/form combinations:</p>
+            <p className="mt-2"><Token name="VolunteerLink" /> — a plain text-link trigger (styled to match <Token name="Footer" />&apos;s other links) opening <Token name="VolunteerForm" />. Used for the &ldquo;Volunteer&rdquo; entry in Singapore&apos;s footer.</p>
+            <p className="mt-2"><Token name="ContactButton" /> — a <Token name="Button" /> trigger opening <Token name="ContactForm" /> (name/email/message only, no categories or commitment period). Used for Brooklyn&apos;s &ldquo;Volunteer with us&rdquo; button, since Brooklyn&apos;s volunteer sign-up doesn&apos;t need the fuller <Token name="VolunteerForm" /> fields.</p>
+            <p className="mt-2"><Token name="ContactLink" /> — the text-link equivalent of <Token name="ContactButton" />. Used for Brooklyn&apos;s footer &ldquo;Volunteer&rdquo; entry.</p>
+            <p className="mt-2">All four trigger molecules (these three plus <Token name="ContactTile" />) accept an optional <Token name="title" /> to override the default &ldquo;Contact/Volunteer with {"{chapterName}"}&rdquo; modal title — e.g. Brooklyn&apos;s pass <Token name='title="Volunteer with Brooklyn Product Design"' /> onto what is otherwise a contact form.</p>
+          </Guidance>
+          <PropTable props={[
+            { name: "chapter",     type: '"pdc" | "brooklyn" | "losangeles" | "singapore"', note: "Required" },
+            { name: "chapterName", type: "string",  note: "Required — used in the default modal title" },
+            { name: "categories",  type: "VolunteerCategory[]", note: "VolunteerLink only — required" },
+            { name: "label",       type: "string",  note: 'Optional. Default: "Volunteer" / "Contact us"' },
+            { name: "title",       type: "string",  note: "Optional — overrides the default modal title" },
+            { name: "className",   type: "string",  note: "Link variants only — overrides the default footer-link styling" },
+          ]} />
+          <div className="bg-really-dark-grey p-6 rounded-lg flex flex-col gap-3 max-w-xs">
+            <VolunteerLink chapter="singapore" chapterName={singapore.name} categories={singaporeVolunteerCategories} />
+            <ContactLink chapter="brooklyn" chapterName={brooklyn.name} title="Volunteer with Brooklyn Product Design" label="Volunteer" />
+          </div>
+          <ContactButton chapter="brooklyn" chapterName={brooklyn.name} title="Volunteer with Brooklyn Product Design" label="Volunteer with us" />
         </Shelf>
 
         {/* ── SHELF ── */}

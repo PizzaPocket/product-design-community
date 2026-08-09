@@ -6,6 +6,8 @@ import { SectionWrapper } from "@/components/organisms/SectionWrapper";
 import { LogoGrid } from "@/components/organisms/LogoGrid";
 import { AlternatingMediaRow } from "@/components/molecules/AlternatingMediaRow";
 import { Button } from "@/components/atoms/Button";
+import { ContactButton } from "@/components/molecules/ContactButton";
+import { ContactLink } from "@/components/molecules/ContactLink";
 import { brooklyn, bkPartnerLogos } from "@/content/brooklyn";
 import type { Metadata } from "next";
 
@@ -68,6 +70,22 @@ export default function BrooklynPage() {
           </Shelf>
         )}
 
+        {/* Keen to get involved */}
+        <Shelf size="sm" className="flex flex-col items-center gap-6">
+          <p
+            className="text-really-dark-grey text-center"
+            style={{ fontSize: "var(--text-b1)", lineHeight: "var(--lh-b1)" }}
+          >
+            Keen to get involved?
+          </p>
+          <ContactButton
+            chapter="brooklyn"
+            chapterName={brooklyn.name}
+            title="Volunteer with Brooklyn Product Design"
+            label="Volunteer with us"
+          />
+        </Shelf>
+
         {/* Partner logos */}
         <LogoGrid
           logos={bkPartnerLogos}
@@ -76,7 +94,12 @@ export default function BrooklynPage() {
         />
       </main>
 
-      <Footer chapter={brooklyn} />
+      <Footer
+        chapter={brooklyn}
+        volunteerTrigger={
+          <ContactLink chapter="brooklyn" chapterName={brooklyn.name} title="Volunteer with Brooklyn Product Design" label="Volunteer" />
+        }
+      />
     </>
   );
 }

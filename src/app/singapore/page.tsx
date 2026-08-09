@@ -8,6 +8,7 @@ import { LogoGrid } from "@/components/organisms/LogoGrid";
 import { AlternatingMediaRow } from "@/components/molecules/AlternatingMediaRow";
 import { Button } from "@/components/atoms/Button";
 import { VolunteerButton } from "@/components/molecules/VolunteerButton";
+import { VolunteerLink } from "@/components/molecules/VolunteerLink";
 import { singapore, singaporePartnerLogos, singaporeVolunteerCategories } from "@/content/singapore";
 import type { Metadata } from "next";
 
@@ -118,7 +119,10 @@ export default function SingaporePage() {
         />
       </main>
 
-      <Footer chapter={singapore} />
+      <Footer
+        chapter={singapore}
+        volunteerTrigger={<VolunteerLink chapter="singapore" chapterName={singapore.name} categories={singaporeVolunteerCategories} />}
+      />
     </>
   );
 }

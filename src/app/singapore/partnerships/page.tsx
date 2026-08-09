@@ -9,7 +9,8 @@ import { Footer } from "@/components/organisms/Footer";
 import { Shelf } from "@/components/organisms/Shelf";
 import { LogoGrid } from "@/components/organisms/LogoGrid";
 import { Card } from "@/components/molecules/Card";
-import { singapore, singaporePartnershipTiers, singaporePartnerLogos } from "@/content/singapore";
+import { VolunteerLink } from "@/components/molecules/VolunteerLink";
+import { singapore, singaporePartnershipTiers, singaporePartnerLogos, singaporeVolunteerCategories } from "@/content/singapore";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -64,7 +65,10 @@ export default function SingaporePartnershipsPage() {
         />
       </main>
 
-      <Footer chapter={singapore} />
+      <Footer
+        chapter={singapore}
+        volunteerTrigger={<VolunteerLink chapter="singapore" chapterName={singapore.name} categories={singaporeVolunteerCategories} />}
+      />
     </>
   );
 }

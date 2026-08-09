@@ -4,6 +4,7 @@ import { ImageColumns } from "@/components/organisms/ImageColumns";
 import { ProfileGrid } from "@/components/organisms/ProfileGrid";
 import { Shelf } from "@/components/organisms/Shelf";
 import { VolunteerButton } from "@/components/molecules/VolunteerButton";
+import { VolunteerLink } from "@/components/molecules/VolunteerLink";
 import { singapore, singaporeVolunteerCategories } from "@/content/singapore";
 import type { Metadata } from "next";
 
@@ -110,7 +111,10 @@ export default function SingaporeAboutPage() {
         )}
       </main>
 
-      <Footer chapter={singapore} />
+      <Footer
+        chapter={singapore}
+        volunteerTrigger={<VolunteerLink chapter="singapore" chapterName={singapore.name} categories={singaporeVolunteerCategories} />}
+      />
     </>
   );
 }

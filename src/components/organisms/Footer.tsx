@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { SocialIconLink } from "@/components/molecules/SocialIconLink";
 import { LinkedInIcon, InstagramIcon, LumaIcon } from "@/components/atoms/SocialIcons";
 import type { ChapterConfig } from "@/types/content";
@@ -5,9 +6,11 @@ import type { ChapterConfig } from "@/types/content";
 
 interface FooterProps {
   chapter: ChapterConfig;
+  /** Overrides the involved-link whose href matches chapter.volunteerHref — e.g. a VolunteerLink that opens a modal instead of navigating. */
+  volunteerTrigger?: ReactNode;
 }
 
-export function Footer({ chapter }: FooterProps) {
+export function Footer({ chapter, volunteerTrigger }: FooterProps) {
   const homeHref = chapter.slug === "pdc" ? "/" : `/${chapter.slug}`;
   const { footer } = chapter;
 
@@ -61,14 +64,18 @@ export function Footer({ chapter }: FooterProps) {
             <ul className="flex flex-col gap-3">
               {footer.involvedLinks.map((link) => (
                 <li key={link.href}>
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-literally-white hover:text-just-grey transition-colors text-sm"
-                  >
-                    {link.label}
-                  </a>
+                  {volunteerTrigger && link.href === chapter.volunteerHref ? (
+                    volunteerTrigger
+                  ) : (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-literally-white hover:text-just-grey transition-colors text-sm"
+                    >
+                      {link.label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>

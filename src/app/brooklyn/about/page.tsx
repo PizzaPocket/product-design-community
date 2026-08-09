@@ -3,6 +3,7 @@ import { Footer } from "@/components/organisms/Footer";
 import { ImageColumns } from "@/components/organisms/ImageColumns";
 import { ProfileGrid } from "@/components/organisms/ProfileGrid";
 import { Shelf } from "@/components/organisms/Shelf";
+import { ContactLink } from "@/components/molecules/ContactLink";
 import { brooklyn } from "@/content/brooklyn";
 import type { Metadata } from "next";
 
@@ -94,7 +95,12 @@ export default function BrooklynAboutPage() {
         )}
       </main>
 
-      <Footer chapter={brooklyn} />
+      <Footer
+        chapter={brooklyn}
+        volunteerTrigger={
+          <ContactLink chapter="brooklyn" chapterName={brooklyn.name} title="Volunteer with Brooklyn Product Design" label="Volunteer" />
+        }
+      />
     </>
   );
 }
