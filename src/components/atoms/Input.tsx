@@ -46,6 +46,7 @@ export function Input({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         className={`${fieldStyles} ${borderStyles} resize-none ${className}`}
+        style={{ fontSize: "var(--text-input)" }}
       />
     );
   }
@@ -61,6 +62,7 @@ export function Input({
       value={value}
       onChange={(e) => onChange(e.target.value)}
       className={`${fieldStyles} ${borderStyles} ${className}`}
+      style={{ fontSize: "var(--text-input)" }}
     />
   );
 }

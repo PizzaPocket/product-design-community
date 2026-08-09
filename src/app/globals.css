@@ -39,6 +39,10 @@
   --text-b2:    16px; --lh-b2:    1.6;
   --text-label: 16px; --lh-label: 1.6; --ls-label: 0.08em;
 
+  /* Fixed at 16px across all breakpoints — iOS Safari auto-zooms on focus
+     when a form field's computed font size is below 16px. */
+  --text-input: 16px;
+
   /* Layout */
   --section-px:    220px;
   --section-py:     64px;
