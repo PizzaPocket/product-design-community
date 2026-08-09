@@ -68,6 +68,12 @@ export interface StatItem {
   label: string;
 }
 
+export interface VolunteerCategory {
+  id: string;
+  label: string;
+  description?: string;
+}
+
 export interface ChapterConfig {
   slug: "pdc" | "brooklyn" | "losangeles" | "singapore";
   name: string;

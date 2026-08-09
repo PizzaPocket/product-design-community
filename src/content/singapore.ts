@@ -1,4 +1,4 @@
-import type { ChapterConfig, ZineVolume, PartnershipTierItem } from "@/types/content";
+import type { ChapterConfig, ZineVolume, PartnershipTierItem, VolunteerCategory } from "@/types/content";
 import type { LogoItem } from "@/content/pdc";
 
 export const singapore: ChapterConfig = {
@@ -138,6 +138,34 @@ export const singapore: ChapterConfig = {
     { name: "Elle Lee" },
   ],
 };
+
+export const singaporeVolunteerCategories: VolunteerCategory[] = [
+  {
+    id: "events",
+    label: "Events",
+    description: "Logistics, emceeing/hosting, checking in attendees, arranging the space pre-event.",
+  },
+  {
+    id: "partnerships",
+    label: "Partnerships",
+    description: "Reaching out to potential partners/sponsors, liaising with speakers.",
+  },
+  {
+    id: "visual",
+    label: "Visual content",
+    description: "Event photography or video (bring your own camera), graphics for social and print.",
+  },
+  {
+    id: "copy",
+    label: "Written content",
+    description: "Post-event write-ups, event descriptions and captions.",
+  },
+  {
+    id: "zine",
+    label: "Zine (Dot Grid)",
+    description: "Writing articles, illustrating or designing spreads, desktop publishing.",
+  },
+];
 
 export const singaporeZines: ZineVolume[] = [
   {

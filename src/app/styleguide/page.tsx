@@ -17,12 +17,15 @@ import { IconMark } from "@/components/atoms/IconMark";
 import { Divider } from "@/components/atoms/Divider";
 import { ContactForm } from "@/components/molecules/ContactForm";
 import { ContactTile } from "@/components/molecules/ContactTile";
+import { VolunteerForm } from "@/components/molecules/VolunteerForm";
+import { VolunteerButton } from "@/components/molecules/VolunteerButton";
 import { bkPartnerLogos, brooklyn } from "@/content/brooklyn";
-import { singapore } from "@/content/singapore";
+import { singapore, singaporeVolunteerCategories } from "@/content/singapore";
 import { pdc } from "@/content/pdc";
 import { StyleGuideShell } from "./StyleGuideShell";
 import { InputDemo } from "./InputDemo";
 import { ModalDemo } from "./ModalDemo";
+import { CheckboxDemo } from "./CheckboxDemo";
 
 export const metadata: Metadata = { title: "Style Guide — PDC" };
 
@@ -535,6 +538,7 @@ export default function StyleGuidePage() {
             <p>A single-line text input or, with <Token name="multiline" />, a textarea — same border, radius, and focus styling either way. Always controlled: pass <Token name="value" /> and <Token name="onChange" />.</p>
             <p className="mt-2">Pair with a native <Token name="&lt;label&gt;" /> in the parent rather than building a labelled-field atom — see <Token name="ContactForm" /> for the pattern.</p>
             <p className="mt-2">Pass <Token name="error" /> to switch the border to <Token name="singapore-sling" /> — the parent owns validation and decides when to set it.</p>
+            <p className="mt-2">Font size is pinned to <Token name="--text-input" /> (16px, fixed across breakpoints) rather than the <Token name="b2" /> type scale — iOS Safari auto-zooms on focus when a field&apos;s computed font size is under 16px, and <Token name="--text-b2" /> drops to 14px on mobile.</p>
           </Guidance>
           <PropTable props={[
             { name: "id",          type: "string",  note: "Required — for label association" },
@@ -549,6 +553,44 @@ export default function StyleGuidePage() {
             { name: "onChange",    type: "(value: string) => void", note: "Required" },
           ]} />
           <InputDemo />
+        </Shelf>
+
+        {/* ── CHECKBOX ── */}
+        <Shelf id="comp-checkbox" background="bg-cookie-dough" className="flex flex-col gap-6">
+          <ComponentHeader level="Atom" file="atoms/Checkbox.tsx">Checkbox</ComponentHeader>
+          <Guidance>
+            <p>A single checkbox or, with <Token name='type="radio"' />, a radio input — same control, same styling. Always controlled: pass <Token name="checked" /> and <Token name="onChange" />.</p>
+            <p className="mt-2">Bare control only, no label. Pair with <Token name="CheckboxField" /> rather than building label/description markup by hand.</p>
+          </Guidance>
+          <PropTable props={[
+            { name: "id",       type: "string",  note: "Required" },
+            { name: "name",     type: "string",  note: "Required — group radios by using the same name" },
+            { name: "type",     type: '"checkbox" | "radio"', note: 'Default: "checkbox"' },
+            { name: "value",    type: "string",  note: "Radio only — the value submitted for this option" },
+            { name: "checked",  type: "boolean", note: "Required — controlled state" },
+            { name: "required", type: "boolean", note: "" },
+            { name: "onChange", type: "(checked: boolean) => void", note: "Required" },
+          ]} />
+        </Shelf>
+
+        {/* ── CHECKBOX FIELD ── */}
+        <Shelf id="comp-checkboxfield" background="bg-literally-white" className="flex flex-col gap-6">
+          <ComponentHeader level="Molecule" file="molecules/CheckboxField.tsx">Checkbox Field</ComponentHeader>
+          <Guidance>
+            <p>A <Token name="Checkbox" /> or radio paired with a bold label and optional description, wrapped in a single clickable <Token name="&lt;label&gt;" />. Used for multi-select checklists and radio groups alike — see <Token name="VolunteerForm" />.</p>
+          </Guidance>
+          <PropTable props={[
+            { name: "id",          type: "string",  note: "Required" },
+            { name: "name",        type: "string",  note: "Required" },
+            { name: "type",        type: '"checkbox" | "radio"', note: 'Default: "checkbox"' },
+            { name: "value",       type: "string",  note: "Radio only" },
+            { name: "checked",     type: "boolean", note: "Required — controlled state" },
+            { name: "required",    type: "boolean", note: "" },
+            { name: "label",       type: "string",  note: "Required — bold title" },
+            { name: "description", type: "string",  note: "Optional — smaller text under the label" },
+            { name: "onChange",    type: "(checked: boolean) => void", note: "Required" },
+          ]} />
+          <CheckboxDemo />
         </Shelf>
 
         {/* ── ALTERNATING MEDIA ROW ── */}
@@ -710,6 +752,40 @@ export default function StyleGuidePage() {
             { name: "title",       type: "string",  note: 'Optional — overrides the default "Contact {chapterName}" modal title' },
             { name: "intro",       type: "string",  note: "Optional — body copy shown above the form" },
           ]} />
+        </Shelf>
+
+        {/* ── VOLUNTEER FORM ── */}
+        <Shelf id="comp-volunteerform" background="bg-literally-white" className="flex flex-col gap-6">
+          <ComponentHeader level="Molecule" file="molecules/VolunteerForm.tsx">Volunteer Form</ComponentHeader>
+          <Guidance>
+            <p>Name, email, phone (optional), a multi-select checklist of ways to help, an optional free-text field, and a commitment-period radio group. Posts to <Token name="/api/volunteer" />, which resolves the destination inbox the same way <Token name="/api/contact" /> does.</p>
+            <p className="mt-2">The <Token name="categories" /> checklist requires at least one selection. Commitment period is required; picking <Token name="Other" /> reveals an inline text field that becomes required in turn. All of this is validated on submit, same pattern as <Token name="ContactForm" />.</p>
+            <p className="mt-2">Category options are content, not hardcoded copy — pass them in via <Token name="categories" /> (see <Token name="singaporeVolunteerCategories" /> in <Token name="src/content/singapore.ts" />) so other chapters can define their own.</p>
+          </Guidance>
+          <PropTable props={[
+            { name: "chapter",    type: '"pdc" | "brooklyn" | "losangeles" | "singapore"', note: "Required — determines the delivery inbox" },
+            { name: "categories", type: "VolunteerCategory[]", note: "Required — the checklist options" },
+            { name: "onSuccess",  type: "() => void", note: "Optional — called once the submission sends successfully" },
+          ]} />
+          <div className="max-w-md">
+            <VolunteerForm chapter="singapore" categories={singaporeVolunteerCategories} />
+          </div>
+        </Shelf>
+
+        {/* ── VOLUNTEER BUTTON ── */}
+        <Shelf id="comp-volunteerbutton" background="bg-cookie-dough" className="flex flex-col gap-6">
+          <ComponentHeader level="Molecule" file="molecules/VolunteerButton.tsx">Volunteer Button</ComponentHeader>
+          <Guidance>
+            <p>A <Token name="Button" /> that opens a <Token name="Modal" /> containing <Token name="VolunteerForm" />, following the same self-contained trigger + modal pattern as <Token name="ContactTile" /> — just with a <Token name="Button" /> trigger instead of a <Token name="Tile" />. Used for the &ldquo;Volunteer with us&rdquo; buttons on the Singapore home and about pages.</p>
+          </Guidance>
+          <PropTable props={[
+            { name: "chapter",     type: '"pdc" | "brooklyn" | "losangeles" | "singapore"', note: "Required" },
+            { name: "chapterName", type: "string",  note: "Required — used in the modal title" },
+            { name: "categories",  type: "VolunteerCategory[]", note: "Required — passed through to VolunteerForm" },
+            { name: "label",       type: "string",  note: 'Optional. Default: "Volunteer with us"' },
+            { name: "variant",     type: '"primary" | "secondary" | "tertiary" | "primary-alt"', note: 'Optional. Default: "primary"' },
+          ]} />
+          <VolunteerButton chapter="singapore" chapterName={singapore.name} categories={singaporeVolunteerCategories} />
         </Shelf>
 
         {/* ── SHELF ── */}

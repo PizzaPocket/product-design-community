@@ -2,23 +2,27 @@ import { NextResponse } from "next/server";
 import { getResendClient } from "@/lib/resend";
 import { CHAPTERS, EMAIL_RE } from "@/lib/chapters";
 
-interface ContactBody {
+interface VolunteerBody {
   chapter?: string;
   name?: string;
   email?: string;
-  message?: string;
+  phone?: string;
+  categories?: string[];
+  otherHelp?: string;
+  commitmentPeriod?: string;
+  commitmentOther?: string;
   company?: string; // honeypot — real users never fill this in
 }
 
 export async function POST(request: Request) {
-  let body: ContactBody;
+  let body: VolunteerBody;
   try {
     body = await request.json();
   } catch {
     return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
   }
 
-  const { chapter, name, email, message, company } = body;
+  const { chapter, name, email, phone, categories, otherHelp, commitmentPeriod, commitmentOther, company } = body;
 
   // Honeypot tripped — pretend success so bots don't learn to skip the field.
   if (company) {
@@ -30,8 +34,8 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Unknown chapter" }, { status: 400 });
   }
 
-  if (!name?.trim() || !email?.trim() || !message?.trim()) {
-    return NextResponse.json({ error: "Name, email, and message are required" }, { status: 400 });
+  if (!name?.trim() || !email?.trim() || !categories?.length || !commitmentPeriod?.trim()) {
+    return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
   }
 
   if (!EMAIL_RE.test(email)) {
@@ -40,8 +44,19 @@ export async function POST(request: Request) {
 
   const fromAddress = process.env.RESEND_FROM_EMAIL;
   if (!fromAddress) {
-    return NextResponse.json({ error: "Contact form is not configured" }, { status: 500 });
+    return NextResponse.json({ error: "Volunteer form is not configured" }, { status: 500 });
   }
+
+  const lines = [
+    `Name: ${name}`,
+    `Email: ${email}`,
+    phone?.trim() ? `Phone: ${phone}` : null,
+    "",
+    `Interested in: ${categories.join(", ")}`,
+    otherHelp?.trim() ? `Other ways they'd like to help: ${otherHelp}` : null,
+    "",
+    `Commitment period: ${commitmentPeriod}${commitmentOther?.trim() ? ` (${commitmentOther})` : ""}`,
+  ].filter((line) => line !== null);
 
   try {
     const resend = getResendClient();
@@ -49,8 +64,8 @@ export async function POST(request: Request) {
       from: `${chapterConfig.name} website <${fromAddress}>`,
       to: chapterConfig.contactEmail,
       replyTo: email,
-      subject: `New contact form submission — ${chapterConfig.name}`,
-      text: `From: ${name} <${email}>\n\n${message}`,
+      subject: `New volunteer sign-up — ${chapterConfig.name}`,
+      text: lines.join("\n"),
     });
 
     if (error) {
@@ -60,7 +75,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ ok: true });
   } catch (err) {
-    console.error("Contact form error:", err);
+    console.error("Volunteer form error:", err);
     return NextResponse.json({ error: "Failed to send message" }, { status: 500 });
   }
 }

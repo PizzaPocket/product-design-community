@@ -3,8 +3,8 @@ import { Footer } from "@/components/organisms/Footer";
 import { ImageColumns } from "@/components/organisms/ImageColumns";
 import { ProfileGrid } from "@/components/organisms/ProfileGrid";
 import { Shelf } from "@/components/organisms/Shelf";
-import { Button } from "@/components/atoms/Button";
-import { singapore } from "@/content/singapore";
+import { VolunteerButton } from "@/components/molecules/VolunteerButton";
+import { singapore, singaporeVolunteerCategories } from "@/content/singapore";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -80,11 +80,7 @@ export default function SingaporeAboutPage() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                {singapore.volunteerHref && (
-                  <Button variant="primary" href={singapore.volunteerHref} target="_blank">
-                    Volunteer with us
-                  </Button>
-                )}
+                <VolunteerButton chapter="singapore" chapterName={singapore.name} categories={singaporeVolunteerCategories} />
               </div>
             }
           />

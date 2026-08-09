@@ -7,7 +7,8 @@ import { PhotoCarousel } from "@/components/organisms/PhotoCarousel";
 import { LogoGrid } from "@/components/organisms/LogoGrid";
 import { AlternatingMediaRow } from "@/components/molecules/AlternatingMediaRow";
 import { Button } from "@/components/atoms/Button";
-import { singapore, singaporePartnerLogos } from "@/content/singapore";
+import { VolunteerButton } from "@/components/molecules/VolunteerButton";
+import { singapore, singaporePartnerLogos, singaporeVolunteerCategories } from "@/content/singapore";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -89,11 +90,7 @@ export default function SingaporePage() {
               >
                 Keen to get involved?
               </p>
-              {singapore.volunteerHref && (
-                <Button variant="primary" href={singapore.volunteerHref} target="_blank">
-                  Volunteer with us
-                </Button>
-              )}
+              <VolunteerButton chapter="singapore" chapterName={singapore.name} categories={singaporeVolunteerCategories} />
             </SectionWrapper>
           </Shelf>
         )}

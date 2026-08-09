@@ -41,23 +41,25 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
         onClick={onClose}
         aria-hidden="true"
       />
-      <div className="relative w-full max-w-md bg-literally-white rounded-[var(--radius-card)] p-8 shadow-lg">
+      <div className="relative w-full max-w-md max-h-[90vh] bg-literally-white rounded-[var(--radius-card)] shadow-lg overflow-hidden">
         <button
           onClick={onClose}
           aria-label="Close"
-          className="absolute top-4 right-4 text-nearly-black hover:text-deep-blueklyn transition-colors"
+          className="absolute top-4 right-4 z-10 text-nearly-black hover:text-deep-blueklyn transition-colors"
         >
           <X size={20} />
         </button>
-        {title && (
-          <h3
-            className="font-bold text-nearly-black mb-6 pr-8"
-            style={{ fontSize: "var(--text-h3)", lineHeight: "var(--lh-h3)" }}
-          >
-            {title}
-          </h3>
-        )}
-        {children}
+        <div className="overflow-y-auto max-h-[90vh] p-8">
+          {title && (
+            <h3
+              className="font-bold text-nearly-black mb-6 pr-8"
+              style={{ fontSize: "var(--text-h3)", lineHeight: "var(--lh-h3)" }}
+            >
+              {title}
+            </h3>
+          )}
+          {children}
+        </div>
       </div>
     </div>
   );
