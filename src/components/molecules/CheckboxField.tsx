@@ -35,9 +35,15 @@ export function CheckboxField({
         onChange={onChange}
         className="mt-0.5"
       />
-      <span className="flex flex-col gap-0.5">
-        <span className="font-bold text-nearly-black text-sm">{label}</span>
-        {description && <span className="text-really-dark-grey text-sm">{description}</span>}
+      <span className="flex flex-col gap-1">
+        <span className="font-bold text-nearly-black" style={{ fontSize: "var(--text-label)", lineHeight: "var(--lh-label)" }}>
+          {label}
+        </span>
+        {description && (
+          <span className="text-really-dark-grey" style={{ fontSize: "var(--text-b2)", lineHeight: "var(--lh-b2)" }}>
+            {description}
+          </span>
+        )}
       </span>
     </label>
   );

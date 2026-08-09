@@ -20,6 +20,9 @@ interface FieldErrors {
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+const labelStyle = { fontSize: "var(--text-label)", lineHeight: "var(--lh-label)" };
+const bodyStyle = { fontSize: "var(--text-b2)", lineHeight: "var(--lh-b2)" };
+
 function RequiredMark() {
   return (
     <span className="text-singapore-sling" aria-hidden="true">
@@ -39,7 +42,7 @@ export function ContactForm({ chapter, onSuccess }: ContactFormProps) {
 
   if (status === "success") {
     return (
-      <p className="text-really-dark-grey" style={{ fontSize: "var(--text-b2)", lineHeight: "var(--lh-b2)" }}>
+      <p className="text-really-dark-grey" style={bodyStyle}>
         Thanks for reaching out. Please give our volunteers time to get back to you soon.
       </p>
     );
@@ -81,27 +84,27 @@ export function ContactForm({ chapter, onSuccess }: ContactFormProps) {
   return (
     <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4">
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="contact-name" className="text-sm font-bold text-nearly-black">
+        <label htmlFor="contact-name" className="font-bold text-nearly-black" style={labelStyle}>
           Name<RequiredMark />
         </label>
         <Input id="contact-name" name="name" required error={!!errors.name} value={name} onChange={setName} />
-        {errors.name && <p className="text-singapore-sling text-sm">{errors.name}</p>}
+        {errors.name && <p className="text-singapore-sling" style={bodyStyle}>{errors.name}</p>}
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="contact-email" className="text-sm font-bold text-nearly-black">
+        <label htmlFor="contact-email" className="font-bold text-nearly-black" style={labelStyle}>
           Email<RequiredMark />
         </label>
         <Input id="contact-email" name="email" type="email" required error={!!errors.email} value={email} onChange={setEmail} />
-        {errors.email && <p className="text-singapore-sling text-sm">{errors.email}</p>}
+        {errors.email && <p className="text-singapore-sling" style={bodyStyle}>{errors.email}</p>}
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="contact-message" className="text-sm font-bold text-nearly-black">
+        <label htmlFor="contact-message" className="font-bold text-nearly-black" style={labelStyle}>
           Message<RequiredMark />
         </label>
         <Input id="contact-message" name="message" multiline required error={!!errors.message} value={message} onChange={setMessage} />
-        {errors.message && <p className="text-singapore-sling text-sm">{errors.message}</p>}
+        {errors.message && <p className="text-singapore-sling" style={bodyStyle}>{errors.message}</p>}
       </div>
 
       {/* Honeypot — hidden from sighted users, left open for bots */}
@@ -119,7 +122,7 @@ export function ContactForm({ chapter, onSuccess }: ContactFormProps) {
       </div>
 
       {status === "error" && (
-        <p className="text-singapore-sling text-sm">Something went wrong. Please try again.</p>
+        <p className="text-singapore-sling" style={bodyStyle}>Something went wrong. Please try again.</p>
       )}
 
       <Button variant="primary" disabled={status === "submitting"} className="w-full justify-center mt-2">

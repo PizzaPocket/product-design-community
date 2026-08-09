@@ -30,6 +30,9 @@ const COMMITMENT_OPTIONS = [
   { id: "other", label: "Other", description: undefined },
 ] as const;
 
+const labelStyle = { fontSize: "var(--text-label)", lineHeight: "var(--lh-label)" };
+const bodyStyle = { fontSize: "var(--text-b2)", lineHeight: "var(--lh-b2)" };
+
 function RequiredMark() {
   return (
     <span className="text-singapore-sling" aria-hidden="true">
@@ -53,7 +56,7 @@ export function VolunteerForm({ chapter, categories, onSuccess }: VolunteerFormP
 
   if (status === "success") {
     return (
-      <p className="text-really-dark-grey" style={{ fontSize: "var(--text-b2)", lineHeight: "var(--lh-b2)" }}>
+      <p className="text-really-dark-grey" style={bodyStyle}>
         Thanks for signing up to volunteer! We&apos;ll be in touch about next steps.
       </p>
     );
@@ -113,32 +116,32 @@ export function VolunteerForm({ chapter, categories, onSuccess }: VolunteerFormP
     <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-6">
       <div className="flex flex-col gap-4">
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="volunteer-name" className="text-sm font-bold text-nearly-black">
+          <label htmlFor="volunteer-name" className="font-bold text-nearly-black" style={labelStyle}>
             Name<RequiredMark />
           </label>
           <Input id="volunteer-name" name="name" required error={!!errors.name} value={name} onChange={setName} />
-          {errors.name && <p className="text-singapore-sling text-sm">{errors.name}</p>}
+          {errors.name && <p className="text-singapore-sling" style={bodyStyle}>{errors.name}</p>}
         </div>
 
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="volunteer-email" className="text-sm font-bold text-nearly-black">
+          <label htmlFor="volunteer-email" className="font-bold text-nearly-black" style={labelStyle}>
             Email<RequiredMark />
           </label>
           <Input id="volunteer-email" name="email" type="email" required error={!!errors.email} value={email} onChange={setEmail} />
-          {errors.email && <p className="text-singapore-sling text-sm">{errors.email}</p>}
+          {errors.email && <p className="text-singapore-sling" style={bodyStyle}>{errors.email}</p>}
         </div>
 
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="volunteer-phone" className="text-sm font-bold text-nearly-black">
+          <label htmlFor="volunteer-phone" className="font-bold text-nearly-black" style={labelStyle}>
             Phone
           </label>
           <Input id="volunteer-phone" name="phone" type="tel" value={phone} onChange={setPhone} placeholder="Optional" />
-          <p className="text-just-grey text-sm">Add this if you&apos;d like to be added to our volunteer WhatsApp group.</p>
+          <p className="text-just-grey" style={bodyStyle}>Add this if you&apos;d like to be added to our volunteer WhatsApp group.</p>
         </div>
       </div>
 
       <div className="flex flex-col gap-3">
-        <p className="text-sm font-bold text-nearly-black">
+        <p className="font-bold text-nearly-black" style={labelStyle}>
           How would you like to help?<RequiredMark />
         </p>
         <div className="flex flex-col gap-3">
@@ -154,18 +157,18 @@ export function VolunteerForm({ chapter, categories, onSuccess }: VolunteerFormP
             />
           ))}
         </div>
-        {errors.categories && <p className="text-singapore-sling text-sm">{errors.categories}</p>}
+        {errors.categories && <p className="text-singapore-sling" style={bodyStyle}>{errors.categories}</p>}
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="volunteer-other-help" className="text-sm font-bold text-nearly-black">
+        <label htmlFor="volunteer-other-help" className="font-bold text-nearly-black" style={labelStyle}>
           Anything else you&apos;d like to help with?
         </label>
         <Input id="volunteer-other-help" name="otherHelp" multiline rows={3} value={otherHelp} onChange={setOtherHelp} />
       </div>
 
       <div className="flex flex-col gap-3">
-        <p className="text-sm font-bold text-nearly-black">
+        <p className="font-bold text-nearly-black" style={labelStyle}>
           Commitment period<RequiredMark />
         </p>
         <div className="flex flex-col gap-3">
@@ -193,7 +196,7 @@ export function VolunteerForm({ chapter, categories, onSuccess }: VolunteerFormP
             onChange={setCommitmentOther}
           />
         )}
-        {errors.commitmentOther && <p className="text-singapore-sling text-sm">{errors.commitmentOther}</p>}
+        {errors.commitmentOther && <p className="text-singapore-sling" style={bodyStyle}>{errors.commitmentOther}</p>}
       </div>
 
       {/* Honeypot — hidden from sighted users, left open for bots */}
@@ -211,7 +214,7 @@ export function VolunteerForm({ chapter, categories, onSuccess }: VolunteerFormP
       </div>
 
       {status === "error" && (
-        <p className="text-singapore-sling text-sm">Something went wrong. Please try again.</p>
+        <p className="text-singapore-sling" style={bodyStyle}>Something went wrong. Please try again.</p>
       )}
 
       <Button variant="primary" disabled={status === "submitting"} className="w-full justify-center">

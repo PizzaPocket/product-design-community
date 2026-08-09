@@ -34,22 +34,22 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
       role="dialog"
       aria-modal="true"
       aria-label={title}
-      className="fixed inset-0 z-[70] flex items-center justify-center p-4"
+      className="fixed inset-0 z-[70] flex items-center justify-center p-4 md:p-8"
     >
       <div
         className="absolute inset-0 bg-nearly-black/60"
         onClick={onClose}
         aria-hidden="true"
       />
-      <div className="relative w-full max-w-md max-h-[90vh] bg-literally-white rounded-[var(--radius-card)] shadow-lg overflow-hidden">
+      <div className="relative w-full max-w-md md:max-w-2xl max-h-[90vh] bg-literally-white rounded-[var(--radius-card)] shadow-lg overflow-hidden">
         <button
           onClick={onClose}
           aria-label="Close"
-          className="absolute top-4 right-4 z-10 text-nearly-black hover:text-deep-blueklyn transition-colors"
+          className="absolute top-4 right-4 md:top-6 md:right-6 z-10 text-nearly-black hover:text-deep-blueklyn transition-colors"
         >
           <X size={20} />
         </button>
-        <div className="overflow-y-auto max-h-[90vh] p-8">
+        <div className="overflow-y-auto max-h-[90vh] p-8 md:p-12">
           {title && (
             <h3
               className="font-bold text-nearly-black mb-6 pr-8"

@@ -707,6 +707,7 @@ export default function StyleGuidePage() {
           <ComponentHeader level="Molecule" file="molecules/Modal.tsx">Modal</ComponentHeader>
           <Guidance>
             <p>A centered dialog with a scrim backdrop. Closes on backdrop click, the X button, or Escape, and locks page scroll while open. Purely a layout shell — <Token name="isOpen" />/<Token name="onClose" /> are owned by the parent.</p>
+            <p className="mt-2">Panel width and padding step up at <Token name="md" /> (768px+) — <Token name="max-w-md" /> to <Token name="max-w-2xl" />, <Token name="p-8" /> to <Token name="p-12" /> — so longer forms get real breathing room on desktop instead of staying phone-width. Content scrolls internally past <Token name="90vh" /> with the close button pinned in place.</p>
             <p className="mt-2">For a self-contained trigger + modal pairing (the common case), use <Token name="ContactTile" /> instead of wiring <Token name="Modal" /> up by hand.</p>
           </Guidance>
           <PropTable props={[
