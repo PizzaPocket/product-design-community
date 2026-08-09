@@ -72,6 +72,7 @@ export default function BrooklynPage() {
 
         {/* Keen to get involved */}
         <Shelf size="sm" className="flex flex-col items-center gap-6">
+          <hr className="w-full border-just-grey/20" />
           <p
             className="text-really-dark-grey text-center"
             style={{ fontSize: "var(--text-b1)", lineHeight: "var(--lh-b1)" }}
