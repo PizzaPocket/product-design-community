@@ -78,13 +78,13 @@ Props must be typed. No `any`. No untyped objects.
 | Icons | lucide-react (Feather icon set) |
 | Carousel | embla-carousel-react |
 | Font | Figtree via next/font/google |
-| Deploy | Vercel (static export) |
+| Deploy | Vercel |
 
 ## Key Commands
 
 ```bash
 npm run dev      # local dev server
-npm run build    # static export build
+npm run build    # production build
 npm run lint     # ESLint
 ```
 
