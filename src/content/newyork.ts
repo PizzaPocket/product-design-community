@@ -36,7 +36,7 @@ export const newYork: ChapterConfig = {
     heading: "What's Good",
     image: "/images/newyork/hero.webp",
     textAlign: "center",
-    scrim: "tb",
+    scrim: "full",
     compact: true,
     ctaLabel: "Go to events",
     ctaHref: "https://luma.com/nyproductdesign",
@@ -45,7 +45,7 @@ export const newYork: ChapterConfig = {
 
   about: {
     heading: "About us",
-    body: "Since 2017, New York Product Design, formerly Brooklyn Product Design, has been a place where designers connect, learn, and create together. What began with a handful of people in Williamsburg now reaches across the city, thousands of members strong.",
+    body: "Since 2017, New York Product Design (formerly Brooklyn Product Design) has been a place where designers connect, learn, and create together. What began with a handful of people in Williamsburg now reaches across the city, thousands of members strong.",
     paragraphs: [
       "New York Product Design began in 2017 as Brooklyn Product Design, with a simple idea: to bring people together through curiosity, creativity, and shared learning. What started as small gatherings at Fuzz in Williamsburg has grown into a thriving community of over 5,600 Meetup members and 600 Luma subscribers.",
       "Nearly ten years on, our members and our events reach well past one borough. In 2026 we became New York Product Design, a name that matches where the community already was. The name is new. The people, the volunteers, and the welcome are the same.",

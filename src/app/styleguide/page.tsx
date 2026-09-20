@@ -904,7 +904,7 @@ export default function StyleGuidePage() {
           heading="What's Good"
           image="/images/newyork/hero.webp"
           textAlign="center"
-          scrim="tb"
+          scrim="full"
           compact
           ctaLabel="Go to events"
           ctaHref="#"
