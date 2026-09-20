@@ -22,6 +22,8 @@ import { VolunteerButton } from "@/components/molecules/VolunteerButton";
 import { VolunteerLink } from "@/components/molecules/VolunteerLink";
 import { ContactButton } from "@/components/molecules/ContactButton";
 import { ContactLink } from "@/components/molecules/ContactLink";
+import { SocialIconLink } from "@/components/molecules/SocialIconLink";
+import { LinkedInIcon, InstagramIcon, LumaIcon, SubstackIcon } from "@/components/atoms/SocialIcons";
 import { nyPartnerLogos, newYork } from "@/content/newyork";
 import { singapore, singaporeVolunteerCategories } from "@/content/singapore";
 import { pdc } from "@/content/pdc";
@@ -531,6 +533,32 @@ export default function StyleGuidePage() {
             <IconMark size={32} />
             <IconMark size={48} />
             <IconMark size={64} />
+          </div>
+        </Shelf>
+
+        {/* ── SOCIAL ICONS ── */}
+        <Shelf id="comp-socialicons" background="bg-cookie-dough" className="flex flex-col gap-6">
+          <ComponentHeader level="Atom + Molecule" file="atoms/SocialIcons.tsx, molecules/SocialIconLink.tsx">
+            Social icons
+          </ComponentHeader>
+          <Guidance>
+            <p><Token name="SocialIcons" /> exports one hand-rolled SVG per platform: <Token name="LinkedInIcon" />, <Token name="InstagramIcon" />, <Token name="LumaIcon" />, <Token name="SubstackIcon" />. They are hand-rolled because lucide-react carries no brand marks at all, so there is nothing to import.</p>
+            <p className="mt-2">Each takes <Token name="size" /> and fills with <Token name="currentColor" />, so colour comes from the parent. Substack&apos;s mark spans its full 24x24 box where the others are inset, so it is scaled inside the icon to match their optical size. Keep that in mind if you add a fifth.</p>
+            <p className="mt-2"><Token name="SocialIconLink" /> wraps one in an external link with the hover treatment and an <Token name="aria-label" />. The icons are <Token name="aria-hidden" />, so the label is the only thing a screen reader announces. Always pass something descriptive: &ldquo;Newsletter on Substack&rdquo;, not &ldquo;Substack&rdquo;.</p>
+            <p className="mt-2">Rendered only in the <Token name="Footer" />&apos;s &ldquo;Follow us&rdquo; column, each one gated on the matching <Token name="chapter.footer.social" /> key being set. A chapter that omits a key simply drops that icon.</p>
+          </Guidance>
+          <PropTable props={[
+            { name: "size",      type: "number",     note: "Icon width and height in px. Default: 20" },
+            { name: "className", type: "string",     note: "Optional Tailwind classes" },
+            { name: "href",      type: "string",     note: "SocialIconLink only — required" },
+            { name: "icon",      type: "ReactNode",  note: "SocialIconLink only — required" },
+            { name: "label",     type: "string",     note: "SocialIconLink only — required, becomes aria-label" },
+          ]} />
+          <div className="bg-really-dark-grey p-6 rounded-lg flex items-center gap-4">
+            <SocialIconLink href="#" label="LinkedIn" icon={<LinkedInIcon size={20} />} />
+            <SocialIconLink href="#" label="Instagram" icon={<InstagramIcon size={20} />} />
+            <SocialIconLink href="#" label="Events on Luma" icon={<LumaIcon size={20} />} />
+            <SocialIconLink href="#" label="Newsletter on Substack" icon={<SubstackIcon size={20} />} />
           </div>
         </Shelf>
 

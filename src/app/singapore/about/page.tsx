@@ -46,9 +46,9 @@ export default function SingaporeAboutPage() {
               The Singapore chapter is part of the broader{" "}
               <a href="/" className="text-deep-blueklyn hover:opacity-70 transition-opacity">Product Design Community</a>
               , which includes sibling chapters in{" "}
-              <a href="/newyork" className="text-deep-blueklyn hover:opacity-70 transition-opacity">New York</a>
-              {" "}and{" "}
               <a href="/losangeles" className="text-deep-blueklyn hover:opacity-70 transition-opacity">Los Angeles</a>
+              {" "}and{" "}
+              <a href="/newyork" className="text-deep-blueklyn hover:opacity-70 transition-opacity">New York</a>
               , committed to building thoughtful, welcoming spaces where people can grow.
             </p>
             <p

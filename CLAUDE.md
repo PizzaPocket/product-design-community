@@ -51,7 +51,13 @@ All design values are defined once in `src/app/globals.css` (`@theme` block + `:
 
 Changing a color = one line in `globals.css`. That's the contract.
 
-### 4. Abstract over local — always prefer reusable patterns
+### 4. Chapters are always listed alphabetically
+
+Any list of chapters renders in alphabetical order by chapter name: Los Angeles, New York, Singapore. This applies to nav links, footer link columns, the home-page chapter tiles, and prose that names sibling chapters.
+
+The order lives in the data, not the renderer, so it is set in `src/content/pdc.ts` and in each chapter's about-page copy. When a chapter is added, insert it in position rather than appending.
+
+### 5. Abstract over local — always prefer reusable patterns
 
 Before writing any JSX, ask: *could this be a reusable atom or molecule?*
 
@@ -61,7 +67,7 @@ Before writing any JSX, ask: *could this be a reusable atom or molecule?*
 Chapter-specific content (copy, links, team lists) lives in `src/content/[chapter].ts` data files.
 Component files contain zero hard-coded content strings.
 
-### 5. TypeScript interfaces before components
+### 6. TypeScript interfaces before components
 
 Content shape is defined in `src/types/content.ts` before any page or template is written.
 Props must be typed. No `any`. No untyped objects.

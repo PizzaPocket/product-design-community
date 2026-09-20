@@ -50,3 +50,24 @@ export function LumaIcon({ size = 20, className = "" }: IconProps) {
     </svg>
   );
 }
+
+export function SubstackIcon({ size = 20, className = "" }: IconProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-hidden="true"
+    >
+      {/* Substack's mark spans its full 24x24 box, unlike the icons above.
+          Scaled and centred here so it sits at the same optical size as them. */}
+      <path
+        transform="translate(2.4 2.4) scale(0.8)"
+        d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"
+      />
+    </svg>
+  );
+}

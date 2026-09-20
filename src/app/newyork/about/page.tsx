@@ -44,9 +44,9 @@ export default function NewYorkAboutPage() {
               The New York chapter is part of the broader{" "}
               <a href="/" className="text-deep-blueklyn hover:opacity-70 transition-opacity">Product Design Community</a>
               , alongside sibling chapters in{" "}
-              <a href="/singapore" className="text-deep-blueklyn hover:opacity-70 transition-opacity">Singapore</a>
-              {" "}and{" "}
               <a href="/losangeles" className="text-deep-blueklyn hover:opacity-70 transition-opacity">Los Angeles</a>
+              {" "}and{" "}
+              <a href="/singapore" className="text-deep-blueklyn hover:opacity-70 transition-opacity">Singapore</a>
               , all committed to building thoughtful, welcoming spaces where people can grow.
             </p>
             <p
@@ -55,6 +55,8 @@ export default function NewYorkAboutPage() {
             >
               Check out our upcoming events on{" "}
               <a href="https://luma.com/nyproductdesign" target="_blank" rel="noopener" className="text-deep-blueklyn hover:opacity-70 transition-opacity">Luma</a>
+              {" "}and read the{" "}
+              <a href={newYork.footer.social.substack} target="_blank" rel="noopener" className="text-deep-blueklyn hover:opacity-70 transition-opacity">newsletter</a>
               . Follow us on{" "}
               <a href={newYork.footer.social.linkedin} target="_blank" rel="noopener" className="text-deep-blueklyn hover:opacity-70 transition-opacity">LinkedIn</a>
               {" "}or{" "}

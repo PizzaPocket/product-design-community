@@ -15,6 +15,7 @@ export interface FooterConfig {
     linkedin?: string;
     instagram?: string;
     luma?: string;
+    substack?: string;
   };
 }
 

@@ -15,21 +15,21 @@ export const pdc: ChapterConfig = {
 
   nav: {
     links: [
-      { label: "New York", href: "/newyork" },
       { label: "Los Angeles", href: "/losangeles" },
+      { label: "New York", href: "/newyork" },
       { label: "Singapore", href: "/singapore" },
     ],
   },
 
   footer: {
     aboutLinks: [
-      { label: "New York Product Design", href: "/newyork" },
       { label: "Los Angeles Product Design", href: "/losangeles" },
+      { label: "New York Product Design", href: "/newyork" },
       { label: "Singapore Product Design", href: "/singapore" },
     ],
     involvedLinks: [
-      { label: "New York Events", href: "https://luma.com/nyproductdesign" },
       { label: "LA Events", href: "https://luma.com/losangelesproductdesign" },
+      { label: "New York Events", href: "https://luma.com/nyproductdesign" },
       { label: "Singapore Events", href: "https://lu.ma/singaporeproductdesign" },
     ],
     social: {
@@ -107,16 +107,17 @@ export const pdcPartnerLogos: LogoItem[] = [
   { src: "/logos/partners/partner_18.png", alt: "Yext" },
 ];
 
+// Chapters are always listed alphabetically. See CLAUDE.md.
 export const pdcChapters = [
-  {
-    name: "New York",
-    href: "/newyork",
-    image: "/images/newyork/chapter-card.jpg",
-  },
   {
     name: "Los Angeles",
     href: "/losangeles",
     image: "/images/losangeles/chapter-card.jpg",
+  },
+  {
+    name: "New York",
+    href: "/newyork",
+    image: "/images/newyork/chapter-card.jpg",
   },
   {
     name: "Singapore",

@@ -12,6 +12,7 @@ export const newYork: ChapterConfig = {
   nav: {
     links: [
       { label: "Events", href: "https://luma.com/nyproductdesign" },
+      { label: "Newsletter", href: "https://nyproductdesign.substack.com" },
       { label: "About", href: "/newyork/about" },
     ],
   },
@@ -23,12 +24,14 @@ export const newYork: ChapterConfig = {
     ],
     involvedLinks: [
       { label: "Events", href: "https://luma.com/nyproductdesign" },
+      { label: "Newsletter", href: "https://nyproductdesign.substack.com" },
       { label: "Volunteer", href: "https://forms.gle/mobrphDchV83EdQK9" },
     ],
     social: {
       linkedin: "https://linkedin.com/company/bkproductdesign",
-      instagram: "https://instagram.com/bkproductdesign",
+      instagram: "https://www.instagram.com/nyproductdesign",
       luma: "https://luma.com/nyproductdesign",
+      substack: "https://nyproductdesign.substack.com",
     },
   },
 
@@ -61,7 +64,7 @@ export const newYork: ChapterConfig = {
   stats: [
     { value: "2017", label: "Founded" },
     { value: "5,600+", label: "Meetup members" },
-    { value: "600+", label: "Luma subscribers" },
+    { value: "2,000+", label: "Newsletter subscribers" },
   ],
 
   values: [

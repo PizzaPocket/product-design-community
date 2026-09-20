@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { SocialIconLink } from "@/components/molecules/SocialIconLink";
-import { LinkedInIcon, InstagramIcon, LumaIcon } from "@/components/atoms/SocialIcons";
+import { LinkedInIcon, InstagramIcon, LumaIcon, SubstackIcon } from "@/components/atoms/SocialIcons";
 import type { ChapterConfig } from "@/types/content";
 // TODO: replace LinkedInIcon + InstagramIcon with exported SVG assets from Figma/brand kit
 
@@ -109,6 +109,13 @@ export function Footer({ chapter, volunteerTrigger }: FooterProps) {
                   href={footer.social.luma}
                   label="Events on Luma"
                   icon={<LumaIcon size={20} />}
+                />
+              )}
+              {footer.social.substack && (
+                <SocialIconLink
+                  href={footer.social.substack}
+                  label="Newsletter on Substack"
+                  icon={<SubstackIcon size={20} />}
                 />
               )}
             </div>
