@@ -1,6 +1,7 @@
 "use client";
 
-import { X } from "lucide-react";
+import { X, ExternalLink } from "lucide-react";
+import { isExternalHref } from "@/lib/links";
 import { Button } from "@/components/atoms/Button";
 import { IconMark } from "@/components/atoms/IconMark";
 import type { ChapterConfig } from "@/types/content";
@@ -49,17 +50,22 @@ export function MobileMenu({ chapter, isOpen, onClose }: MobileMenuProps) {
 
       {/* Nav links — H2 scale, sentence case, bold */}
       <nav className="flex flex-col px-6 py-10 gap-8">
-        {chapter.nav.links.map((link) => (
-          <a
-            key={link.href}
-            href={link.href}
-            onClick={onClose}
-            className="font-bold text-nearly-black hover:text-deep-blueklyn transition-colors"
-            style={{ fontSize: "var(--text-h2)", lineHeight: "var(--lh-h2)" }}
-          >
-            {link.label}
-          </a>
-        ))}
+        {chapter.nav.links.map((link) => {
+          const isExternal = isExternalHref(link.href);
+          return (
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={onClose}
+              {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+              className="inline-flex items-center gap-2.5 font-bold text-nearly-black hover:text-deep-blueklyn transition-colors"
+              style={{ fontSize: "var(--text-h2)", lineHeight: "var(--lh-h2)" }}
+            >
+              {link.label}
+              {isExternal && <ExternalLink size={20} strokeWidth={2.5} aria-hidden="true" />}
+            </a>
+          );
+        })}
         {chapter.nav.cta && (
           <div className="pt-2">
             <Button variant="primary" href={chapter.nav.cta.href} uppercase={false} onClick={onClose}>

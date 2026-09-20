@@ -34,6 +34,7 @@ const NAV: NavItem[] = [
     { label: "Photo Carousel",        href: "#comp-carousel" },
     { label: "Profile Grid",          href: "#comp-profilegrid" },
     { label: "Shelf",                 href: "#comp-shelf" },
+    { label: "Nav Link",              href: "#comp-navlink" },
     { label: "Social Icons",          href: "#comp-socialicons" },
   ]},
 ];

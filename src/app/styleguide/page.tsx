@@ -23,6 +23,7 @@ import { VolunteerLink } from "@/components/molecules/VolunteerLink";
 import { ContactButton } from "@/components/molecules/ContactButton";
 import { ContactLink } from "@/components/molecules/ContactLink";
 import { SocialIconLink } from "@/components/molecules/SocialIconLink";
+import { NavLink } from "@/components/molecules/NavLink";
 import { LinkedInIcon, InstagramIcon, LumaIcon, SubstackIcon } from "@/components/atoms/SocialIcons";
 import { nyPartnerLogos, newYork } from "@/content/newyork";
 import { singapore, singaporeVolunteerCategories } from "@/content/singapore";
@@ -559,6 +560,28 @@ export default function StyleGuidePage() {
             <SocialIconLink href="#" label="Instagram" icon={<InstagramIcon size={20} />} />
             <SocialIconLink href="#" label="Events on Luma" icon={<LumaIcon size={20} />} />
             <SocialIconLink href="#" label="Newsletter on Substack" icon={<SubstackIcon size={20} />} />
+          </div>
+        </Shelf>
+
+        {/* ── NAV LINK ── */}
+        <Shelf id="comp-navlink" background="bg-literally-white" className="flex flex-col gap-6">
+          <ComponentHeader level="Molecule" file="molecules/NavLink.tsx">Nav Link</ComponentHeader>
+          <Guidance>
+            <p>One entry in the desktop header nav. Reads the current route and colours itself <Token name="text-deep-blueklyn" /> when it matches, so the active page needs no flag passed in.</p>
+            <p className="mt-2"><strong>External links declare themselves.</strong> A link whose <Token name="href" /> starts with <Token name="http" /> is treated as off-site: it gets <Token name="target=&quot;_blank&quot;" />, <Token name="rel=&quot;noopener noreferrer&quot;" />, and a trailing arrow. Nothing is passed to opt in. The rule lives in <Token name="isExternalHref" /> (<Token name="lib/links.ts" />) and <Token name="MobileMenu" /> uses the same helper, so the two navs cannot drift apart.</p>
+            <p className="mt-2">This is why Events carries an arrow in every chapter and Newsletter carries one in New York, while About, Initiatives and Partnerships do not. The PDC nav is all internal, so it shows no arrows at all.</p>
+            <p className="mt-2">Nav always uses the plain arrow, never a brand mark. <Token name="Button" /> swaps in <Token name="LumaIcon" /> for Luma URLs because a large CTA has room for the extra context; a compact nav reads better when every off-site link looks identical.</p>
+          </Guidance>
+          <PropTable props={[
+            { name: "label",     type: "string",     note: "Required" },
+            { name: "href",      type: "string",     note: "Required — an http(s) href makes the link external automatically" },
+            { name: "onClick",   type: "() => void", note: "Optional — used by MobileMenu to close on navigate" },
+            { name: "className", type: "string",     note: "Optional Tailwind classes" },
+          ]} />
+          <div className="flex items-center gap-8">
+            <NavLink label="About" href="/styleguide-example" />
+            <NavLink label="Events" href="https://luma.com/nyproductdesign" />
+            <NavLink label="Newsletter" href="https://nyproductdesign.substack.com" />
           </div>
         </Shelf>
 
