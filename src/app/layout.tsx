@@ -11,7 +11,7 @@ const figtree = Figtree({
 export const metadata: Metadata = {
   title: "Product Design Community",
   description:
-    "A community for product designers across Brooklyn, Los Angeles, and Singapore.",
+    "A community for product designers across New York, Los Angeles, and Singapore.",
 };
 
 export default function RootLayout({

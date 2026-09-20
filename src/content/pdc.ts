@@ -15,7 +15,7 @@ export const pdc: ChapterConfig = {
 
   nav: {
     links: [
-      { label: "Brooklyn", href: "/brooklyn" },
+      { label: "New York", href: "/newyork" },
       { label: "Los Angeles", href: "/losangeles" },
       { label: "Singapore", href: "/singapore" },
     ],
@@ -23,12 +23,12 @@ export const pdc: ChapterConfig = {
 
   footer: {
     aboutLinks: [
-      { label: "Brooklyn Product Design", href: "/brooklyn" },
+      { label: "New York Product Design", href: "/newyork" },
       { label: "Los Angeles Product Design", href: "/losangeles" },
       { label: "Singapore Product Design", href: "/singapore" },
     ],
     involvedLinks: [
-      { label: "Brooklyn Events", href: "https://lu.ma/bkproductdesign" },
+      { label: "New York Events", href: "https://luma.com/nyproductdesign" },
       { label: "LA Events", href: "https://luma.com/losangelesproductdesign" },
       { label: "Singapore Events", href: "https://lu.ma/singaporeproductdesign" },
     ],
@@ -109,9 +109,9 @@ export const pdcPartnerLogos: LogoItem[] = [
 
 export const pdcChapters = [
   {
-    name: "Brooklyn",
-    href: "/brooklyn",
-    image: "/images/brooklyn/chapter-card.jpg",
+    name: "New York",
+    href: "/newyork",
+    image: "/images/newyork/chapter-card.jpg",
   },
   {
     name: "Los Angeles",

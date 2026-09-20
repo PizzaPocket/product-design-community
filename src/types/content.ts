@@ -75,7 +75,7 @@ export interface VolunteerCategory {
 }
 
 export interface ChapterConfig {
-  slug: "pdc" | "brooklyn" | "losangeles" | "singapore";
+  slug: "pdc" | "newyork" | "losangeles" | "singapore";
   name: string;
   accentColor: string;
   logo?: string;

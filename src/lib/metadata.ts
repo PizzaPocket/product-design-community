@@ -9,7 +9,7 @@ export const baseMetadata: Metadata = {
     template: "%s | Product Design Community",
   },
   description:
-    "A community for product designers across Brooklyn, Los Angeles, and Singapore.",
+    "A community for product designers across New York, Los Angeles, and Singapore.",
   openGraph: {
     siteName: "Product Design Community",
     type: "website",

@@ -8,45 +8,45 @@ import { AlternatingMediaRow } from "@/components/molecules/AlternatingMediaRow"
 import { Button } from "@/components/atoms/Button";
 import { ContactButton } from "@/components/molecules/ContactButton";
 import { ContactLink } from "@/components/molecules/ContactLink";
-import { brooklyn, bkPartnerLogos } from "@/content/brooklyn";
+import { newYork, nyPartnerLogos } from "@/content/newyork";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Brooklyn Product Design",
-  description: "A home for product designers in Brooklyn — where curious minds gather, connect, and grow together.",
+  title: "New York Product Design",
+  description: "A home for product designers across New York, where curious minds gather, connect, and grow together.",
 };
 
-export default function BrooklynPage() {
+export default function NewYorkPage() {
   return (
     <>
-      <NavBar chapter={brooklyn} />
+      <NavBar chapter={newYork} />
 
       <main>
         <HeroSection
-          heading={brooklyn.hero.heading}
-          image={brooklyn.hero.image}
-          textAlign={brooklyn.hero.textAlign}
-          scrim={brooklyn.hero.scrim}
-          compact={brooklyn.hero.compact}
-          ctaLabel={brooklyn.hero.ctaLabel}
-          ctaHref={brooklyn.hero.ctaHref}
-          ctaVariant={brooklyn.hero.ctaVariant}
+          heading={newYork.hero.heading}
+          image={newYork.hero.image}
+          textAlign={newYork.hero.textAlign}
+          scrim={newYork.hero.scrim}
+          compact={newYork.hero.compact}
+          ctaLabel={newYork.hero.ctaLabel}
+          ctaHref={newYork.hero.ctaHref}
+          ctaVariant={newYork.hero.ctaVariant}
         />
 
         {/* About blurb */}
-        {brooklyn.about && (
+        {newYork.about && (
           <Shelf size="sm" background="bg-literally-white" className="flex flex-col items-center gap-6">
             <p className="w-full text-really-dark-grey" style={{ fontSize: "var(--text-b1)", lineHeight: "var(--lh-b1)" }}>
-              {brooklyn.about.body}
+              {newYork.about.body}
             </p>
-            <Button variant="secondary" href="/brooklyn/about">
+            <Button variant="secondary" href="/newyork/about">
               More about us
             </Button>
           </Shelf>
         )}
 
         {/* Events we host */}
-        {brooklyn.eventTypes && (
+        {newYork.eventTypes && (
           <Shelf bleed className="flex flex-col gap-6">
             <SectionWrapper as="div">
               <h2
@@ -57,7 +57,7 @@ export default function BrooklynPage() {
               </h2>
             </SectionWrapper>
             <div className="flex flex-col gap-8">
-              {brooklyn.eventTypes.map((event, i) => (
+              {newYork.eventTypes.map((event, i) => (
                 <AlternatingMediaRow
                   key={event.title}
                   heading={event.title}
@@ -80,25 +80,25 @@ export default function BrooklynPage() {
             Keen to get involved?
           </p>
           <ContactButton
-            chapter="brooklyn"
-            chapterName={brooklyn.name}
-            title="Volunteer with Brooklyn Product Design"
+            chapter="newyork"
+            chapterName={newYork.name}
+            title="Volunteer with New York Product Design"
             label="Volunteer with us"
           />
         </Shelf>
 
         {/* Partner logos */}
         <LogoGrid
-          logos={bkPartnerLogos}
+          logos={nyPartnerLogos}
           sectionHeading="Thanks to our partners & supporters"
           background="bg-literally-white"
         />
       </main>
 
       <Footer
-        chapter={brooklyn}
+        chapter={newYork}
         volunteerTrigger={
-          <ContactLink chapter="brooklyn" chapterName={brooklyn.name} title="Volunteer with Brooklyn Product Design" label="Volunteer" />
+          <ContactLink chapter="newyork" chapterName={newYork.name} title="Volunteer with New York Product Design" label="Volunteer" />
         }
       />
     </>

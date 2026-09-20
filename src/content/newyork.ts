@@ -1,53 +1,54 @@
 import type { ChapterConfig } from "@/types/content";
 import type { LogoItem } from "@/content/pdc";
 
-export const brooklyn: ChapterConfig = {
-  slug: "brooklyn",
-  name: "Brooklyn Product Design",
+export const newYork: ChapterConfig = {
+  slug: "newyork",
+  name: "New York Product Design",
   accentColor: "var(--color-deep-blueklyn)",
-  logo: "/logos/bpd_logo_nav.svg",
-  footerLogo: "/logos/bpd_logo_footer.svg",
+  logo: "/logos/nypd_logo_nav.svg",
+  footerLogo: "/logos/nypd_logo_footer.svg",
   contactEmail: "brooklyn@productdesign.community",
 
   nav: {
     links: [
-      { label: "Events", href: "https://lu.ma/bkproductdesign" },
-      { label: "About", href: "/brooklyn/about" },
+      { label: "Events", href: "https://luma.com/nyproductdesign" },
+      { label: "About", href: "/newyork/about" },
     ],
   },
 
   footer: {
     aboutLinks: [
-      { label: "About Brooklyn Product Design", href: "/brooklyn/about" },
+      { label: "About New York Product Design", href: "/newyork/about" },
       { label: "Product Design Community", href: "/" },
     ],
     involvedLinks: [
-      { label: "Events", href: "https://lu.ma/bkproductdesign" },
+      { label: "Events", href: "https://luma.com/nyproductdesign" },
       { label: "Volunteer", href: "https://forms.gle/mobrphDchV83EdQK9" },
     ],
     social: {
       linkedin: "https://linkedin.com/company/bkproductdesign",
       instagram: "https://instagram.com/bkproductdesign",
-      luma: "https://lu.ma/bkproductdesign",
+      luma: "https://luma.com/nyproductdesign",
     },
   },
 
   hero: {
-    heading: "What's on over the Bridge",
-    image: "/images/brooklyn/hero.webp",
+    heading: "What's Good",
+    image: "/images/newyork/hero.webp",
     textAlign: "center",
     scrim: "tb",
     compact: true,
     ctaLabel: "Go to events",
-    ctaHref: "https://lu.ma/bkproductdesign",
+    ctaHref: "https://luma.com/nyproductdesign",
     ctaVariant: "primary-alt",
   },
 
   about: {
     heading: "About us",
-    body: "Since 2017, Brooklyn Product Design has been a place where designers cross the bridge, literally and figuratively, to connect, learn, and create together. From humble beginnings to thousands of members strong, we've grown into a cornerstone of NYC's design scene.",
+    body: "Since 2017, New York Product Design, formerly Brooklyn Product Design, has been a place where designers connect, learn, and create together. What began with a handful of people in Williamsburg now reaches across the city, thousands of members strong.",
     paragraphs: [
-      "Brooklyn Product Design began in 2017 with a simple idea: to bring people together through curiosity, creativity, and shared learning. What started as small gatherings at Fuzz in Williamsburg has grown into a thriving community of over 5,600 Meetup members and 600 Luma subscribers.",
+      "New York Product Design began in 2017 as Brooklyn Product Design, with a simple idea: to bring people together through curiosity, creativity, and shared learning. What started as small gatherings at Fuzz in Williamsburg has grown into a thriving community of over 5,600 Meetup members and 600 Luma subscribers.",
+      "Nearly ten years on, our members and our events reach well past one borough. In 2026 we became New York Product Design, a name that matches where the community already was. The name is new. The people, the volunteers, and the welcome are the same.",
       "We come together to learn, share, and grow, exploring everything from design systems to AI, ethics, and the creative intersections shaping our field. Our events remain grassroots, collaborative, and deeply human, led by volunteers who care about making design accessible and meaningful for all.",
       "We are a non-commercial, volunteer-run collective shaped by the people who show up, share their time, and give something back. We believe that thoughtful design deserves a thoughtful community behind it.",
       "Our events are intentionally free or low-cost. We partner with generous hosts and sponsors to keep the momentum going and provide spaces that invite reflection, celebration, and experimentation.",
@@ -86,36 +87,36 @@ export const brooklyn: ChapterConfig = {
       title: "Lightning talks",
       description:
         "Quick, rapid-fire sessions where community members share what they are exploring, building, or learning about. It is designed to spark curiosity, introduce emerging ideas, and uplift a broad range of perspectives.",
-      image: "/images/brooklyn/event_lightning_talks.webp",
+      image: "/images/newyork/event_lightning_talks.webp",
     },
     {
       title: "Fireside chats",
       description:
         "Friendly and community-centered discussions that give attendees direct access to experienced practitioners. No slides, just meaningful conversation.",
-      image: "/images/brooklyn/event_fireside.webp",
+      image: "/images/newyork/event_fireside.webp",
     },
     {
       title: "Happy hour socials",
       description:
-        "A casual, after-hours meetup where the BKPD community can unwind, share stories, and build genuine relationships beyond structured programming.",
-      image: "/images/brooklyn/event_happy_hour.webp",
+        "A casual, after-hours meetup where the New York Product Design community can unwind, share stories, and build relationships beyond structured programming.",
+      image: "/images/newyork/event_happy_hour.webp",
     },
   ],
 
   team: [
-    { name: "Brian Hui", role: "Co-organizer", photo: "/images/brooklyn/team_1.jpeg" },
-    { name: "Jose Arias", role: "Co-organizer", photo: "/images/brooklyn/team_2.jpeg" },
-    { name: "Collin Hadley", role: "Co-organizer", photo: "/images/brooklyn/team_5.png" },
+    { name: "Brian Hui", role: "Co-organizer", photo: "/images/newyork/team_1.jpeg" },
+    { name: "Jose Arias", role: "Co-organizer", photo: "/images/newyork/team_2.jpeg" },
+    { name: "Collin Hadley", role: "Co-organizer", photo: "/images/newyork/team_5.png" },
   ],
 
   alumniTeam: [
-    { name: "Samantha Li", role: "Advisor", photo: "/images/brooklyn/team_3.png" },
-    { name: "Leonard Reese", role: "Founder, Advisor", photo: "/images/brooklyn/team_4.png" },
+    { name: "Samantha Li", role: "Advisor", photo: "/images/newyork/team_3.png" },
+    { name: "Leonard Reese", role: "Founder, Advisor", photo: "/images/newyork/team_4.png" },
     { name: "Ke Wang", role: "Alumni" },
   ],
 };
 
-export const bkPartnerLogos: LogoItem[] = [
+export const nyPartnerLogos: LogoItem[] = [
   { src: "/logos/partners/partner_01.png", alt: "Adobe" },
   { src: "/images/losangeles/partner_2.svg", alt: "Bamboo Crowd" },
   { src: "/logos/partners/partner_02.png", alt: "BrainStation" },

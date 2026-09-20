@@ -22,7 +22,7 @@ import { VolunteerButton } from "@/components/molecules/VolunteerButton";
 import { VolunteerLink } from "@/components/molecules/VolunteerLink";
 import { ContactButton } from "@/components/molecules/ContactButton";
 import { ContactLink } from "@/components/molecules/ContactLink";
-import { bkPartnerLogos, brooklyn } from "@/content/brooklyn";
+import { nyPartnerLogos, newYork } from "@/content/newyork";
 import { singapore, singaporeVolunteerCategories } from "@/content/singapore";
 import { pdc } from "@/content/pdc";
 import { StyleGuideShell } from "./StyleGuideShell";
@@ -44,7 +44,7 @@ const typeScale = [
 ] as const;
 
 const brandColors = [
-  { name: "Deep Blueklyn",    cssVar: "--color-deep-blueklyn",    hex: "#409AF9", usage: "Brooklyn accent · links · CTAs · hover states" },
+  { name: "Deep Blueklyn",    cssVar: "--color-deep-blueklyn",    hex: "#409AF9", usage: "New York accent · links · CTAs · hover states" },
   { name: "LA Poolside",      cssVar: "--color-la-poolside",      hex: "#60DBDA", usage: "Los Angeles chapter accent" },
   { name: "Singapore Sling",  cssVar: "--color-singapore-sling",  hex: "#F66363", usage: "Singapore chapter accent" },
   { name: "Egg Custard Tart", cssVar: "--color-egg-custard-tart", hex: "#F8DA4D", usage: "Primary Alt button · illustration palette" },
@@ -691,7 +691,7 @@ export default function StyleGuidePage() {
             { name: "label",   type: "string",     note: "Optional — small text above name. Only visible in CTA variant." },
           ]} />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Tile name="Brooklyn" href="#" image="/images/brooklyn/hero.webp" />
+            <Tile name="New York" href="#" image="/images/newyork/hero.webp" />
             <Tile name="Los Angeles" href="#" image="/images/losangeles/hero.png" />
             <Tile name="Singapore" href="#" image="/images/singapore/hero.jpg" />
             <ContactTile
@@ -732,7 +732,7 @@ export default function StyleGuidePage() {
             <p className="mt-2">Usually rendered inside a trigger + modal wrapper like <Token name="ContactTile" /> rather than used directly.</p>
           </Guidance>
           <PropTable props={[
-            { name: "chapter",   type: '"pdc" | "brooklyn" | "losangeles" | "singapore"', note: "Required — determines the delivery inbox" },
+            { name: "chapter",   type: '"pdc" | "newyork" | "losangeles" | "singapore"', note: "Required — determines the delivery inbox" },
             { name: "onSuccess", type: "() => void", note: "Optional — called once the message sends successfully" },
           ]} />
           <div className="max-w-md">
@@ -749,7 +749,7 @@ export default function StyleGuidePage() {
             <p className="mt-2">Because it&apos;s a Client Component wrapping its own state, it can be dropped directly into a Server Component page without any extra wiring — see <Token name="src/app/page.tsx" />.</p>
           </Guidance>
           <PropTable props={[
-            { name: "chapter",     type: '"pdc" | "brooklyn" | "losangeles" | "singapore"', note: "Required" },
+            { name: "chapter",     type: '"pdc" | "newyork" | "losangeles" | "singapore"', note: "Required" },
             { name: "chapterName", type: "string",  note: "Required — used in the default modal title" },
             { name: "name",        type: "string",  note: "Required — the tile's H3 label" },
             { name: "label",       type: "string",  note: "Optional — small text above the tile's name" },
@@ -767,7 +767,7 @@ export default function StyleGuidePage() {
             <p className="mt-2">Category options are content, not hardcoded copy — pass them in via <Token name="categories" /> (see <Token name="singaporeVolunteerCategories" /> in <Token name="src/content/singapore.ts" />) so other chapters can define their own.</p>
           </Guidance>
           <PropTable props={[
-            { name: "chapter",    type: '"pdc" | "brooklyn" | "losangeles" | "singapore"', note: "Required — determines the delivery inbox" },
+            { name: "chapter",    type: '"pdc" | "newyork" | "losangeles" | "singapore"', note: "Required — determines the delivery inbox" },
             { name: "categories", type: "VolunteerCategory[]", note: "Required — the checklist options" },
             { name: "onSuccess",  type: "() => void", note: "Optional — called once the submission sends successfully" },
           ]} />
@@ -783,7 +783,7 @@ export default function StyleGuidePage() {
             <p>A <Token name="Button" /> that opens a <Token name="Modal" /> containing <Token name="VolunteerForm" />, following the same self-contained trigger + modal pattern as <Token name="ContactTile" /> — just with a <Token name="Button" /> trigger instead of a <Token name="Tile" />. Used for the &ldquo;Volunteer with us&rdquo; buttons on the Singapore home and about pages.</p>
           </Guidance>
           <PropTable props={[
-            { name: "chapter",     type: '"pdc" | "brooklyn" | "losangeles" | "singapore"', note: "Required" },
+            { name: "chapter",     type: '"pdc" | "newyork" | "losangeles" | "singapore"', note: "Required" },
             { name: "chapterName", type: "string",  note: "Required — used in the modal title" },
             { name: "categories",  type: "VolunteerCategory[]", note: "Required — passed through to VolunteerForm" },
             { name: "label",       type: "string",  note: 'Optional. Default: "Volunteer with us"' },
@@ -800,12 +800,12 @@ export default function StyleGuidePage() {
           <Guidance>
             <p>Three more trigger + modal pairings following the same self-contained pattern as <Token name="ContactTile" /> and <Token name="VolunteerButton" />, covering the remaining trigger/form combinations:</p>
             <p className="mt-2"><Token name="VolunteerLink" /> — a plain text-link trigger (styled to match <Token name="Footer" />&apos;s other links) opening <Token name="VolunteerForm" />. Used for the &ldquo;Volunteer&rdquo; entry in Singapore&apos;s footer.</p>
-            <p className="mt-2"><Token name="ContactButton" /> — a <Token name="Button" /> trigger opening <Token name="ContactForm" /> (name/email/message only, no categories or commitment period). Used for Brooklyn&apos;s &ldquo;Volunteer with us&rdquo; button, since Brooklyn&apos;s volunteer sign-up doesn&apos;t need the fuller <Token name="VolunteerForm" /> fields.</p>
-            <p className="mt-2"><Token name="ContactLink" /> — the text-link equivalent of <Token name="ContactButton" />. Used for Brooklyn&apos;s footer &ldquo;Volunteer&rdquo; entry.</p>
-            <p className="mt-2">All four trigger molecules (these three plus <Token name="ContactTile" />) accept an optional <Token name="title" /> to override the default &ldquo;Contact/Volunteer with {"{chapterName}"}&rdquo; modal title — e.g. Brooklyn&apos;s pass <Token name='title="Volunteer with Brooklyn Product Design"' /> onto what is otherwise a contact form.</p>
+            <p className="mt-2"><Token name="ContactButton" /> — a <Token name="Button" /> trigger opening <Token name="ContactForm" /> (name/email/message only, no categories or commitment period). Used for New York&apos;s &ldquo;Volunteer with us&rdquo; button, since New York&apos;s volunteer sign-up doesn&apos;t need the fuller <Token name="VolunteerForm" /> fields.</p>
+            <p className="mt-2"><Token name="ContactLink" /> — the text-link equivalent of <Token name="ContactButton" />. Used for New York&apos;s footer &ldquo;Volunteer&rdquo; entry.</p>
+            <p className="mt-2">All four trigger molecules (these three plus <Token name="ContactTile" />) accept an optional <Token name="title" /> to override the default &ldquo;Contact/Volunteer with {"{chapterName}"}&rdquo; modal title — e.g. New York&apos;s pass <Token name='title="Volunteer with New York Product Design"' /> onto what is otherwise a contact form.</p>
           </Guidance>
           <PropTable props={[
-            { name: "chapter",     type: '"pdc" | "brooklyn" | "losangeles" | "singapore"', note: "Required" },
+            { name: "chapter",     type: '"pdc" | "newyork" | "losangeles" | "singapore"', note: "Required" },
             { name: "chapterName", type: "string",  note: "Required — used in the default modal title" },
             { name: "categories",  type: "VolunteerCategory[]", note: "VolunteerLink only — required" },
             { name: "label",       type: "string",  note: 'Optional. Default: "Volunteer" / "Contact us"' },
@@ -814,9 +814,9 @@ export default function StyleGuidePage() {
           ]} />
           <div className="bg-really-dark-grey p-6 rounded-lg flex flex-col gap-3 max-w-xs">
             <VolunteerLink chapter="singapore" chapterName={singapore.name} categories={singaporeVolunteerCategories} />
-            <ContactLink chapter="brooklyn" chapterName={brooklyn.name} title="Volunteer with Brooklyn Product Design" label="Volunteer" />
+            <ContactLink chapter="newyork" chapterName={newYork.name} title="Volunteer with New York Product Design" label="Volunteer" />
           </div>
-          <ContactButton chapter="brooklyn" chapterName={brooklyn.name} title="Volunteer with Brooklyn Product Design" label="Volunteer with us" />
+          <ContactButton chapter="newyork" chapterName={newYork.name} title="Volunteer with New York Product Design" label="Volunteer with us" />
         </Shelf>
 
         {/* ── SHELF ── */}
@@ -901,8 +901,8 @@ export default function StyleGuidePage() {
           ]} />
         </Shelf>
         <HeroSection
-          heading="What's on over the Bridge"
-          image="/images/brooklyn/hero.webp"
+          heading="What's Good"
+          image="/images/newyork/hero.webp"
           textAlign="center"
           scrim="tb"
           compact
@@ -927,7 +927,7 @@ export default function StyleGuidePage() {
           ]} />
         </Shelf>
         <LogoGrid
-          logos={bkPartnerLogos}
+          logos={nyPartnerLogos}
           sectionHeading="Thanks to our partners & supporters"
           background="bg-literally-white"
         />
@@ -948,7 +948,7 @@ export default function StyleGuidePage() {
           ]} />
         </Shelf>
         <ImageColumns
-          pillars={brooklyn.values ?? []}
+          pillars={newYork.values ?? []}
           sectionHeading="What our community stands for"
           background="bg-cookie-dough"
         />
